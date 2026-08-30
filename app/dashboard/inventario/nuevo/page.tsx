@@ -476,7 +476,8 @@ export default function NuevoProductoPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="min-h-screen bg-[#0a0f1a] p-6">
+        <div className="space-y-6">
         {/* Navbar superior tipo Figma */}
         <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
           <div className="flex items-center gap-3">
@@ -1219,6 +1220,7 @@ export default function NuevoProductoPage() {
             </div>
           </div>
         )}
+        </div>
       </div>
     </DashboardLayout>
   );

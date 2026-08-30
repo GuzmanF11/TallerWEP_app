@@ -10,6 +10,8 @@ import { Search, DollarSign, Package, Save, RefreshCw, History, TrendingUp, File
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { SearchFilters, filterProductos, SingleFilterType } from '@/components/search-filters';
+import { NotificationDropdown } from '@/components/notification-dropdown';
+import { UserDropdown } from '@/components/user-dropdown';
 
 interface Producto {
   idprod: number;
@@ -144,18 +146,32 @@ export default function CostosPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-slate-100">Gestión de Costos</h1>
-            <p className="text-slate-400">Administra los costos de los productos</p>
+      <div className="min-h-screen bg-[#0a0f1a] p-6">
+        <div className="space-y-6">
+          {/* Navbar superior */}
+          <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
+              <span className="h-6 w-px bg-slate-700" />
+              <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Gestión de Costos</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <NotificationDropdown />
+              <UserDropdown />
+            </div>
           </div>
-          <Badge variant="outline" className="text-[#0e88c9] border-[#0e88c9]/50">
-            <DollarSign className="h-4 w-4 mr-1" />
-            {productos.length} productos
-          </Badge>
-        </div>
+
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-100">Gestión de Costos</h1>
+              <p className="text-slate-400">Administra los costos de los productos</p>
+            </div>
+            <Badge variant="outline" className="text-[#0e88c9] border-[#0e88c9]/50">
+              <DollarSign className="h-4 w-4 mr-1" />
+              {productos.length} productos
+            </Badge>
+          </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Panel izquierdo - Lista de productos */}
@@ -348,6 +364,7 @@ export default function CostosPage() {
               )}
             </CardContent>
           </Card>
+        </div>
         </div>
       </div>
     </DashboardLayout>

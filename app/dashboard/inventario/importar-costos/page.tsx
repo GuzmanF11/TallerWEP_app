@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Upload, FileSpreadsheet, CheckCircle, XCircle, AlertTriangle, RefreshCw, Download, DollarSign } from 'lucide-react';
 import { useState, useRef } from 'react';
+import { NotificationDropdown } from '@/components/notification-dropdown';
+import { UserDropdown } from '@/components/user-dropdown';
 
 interface PreviewData {
   headers: string[];
@@ -132,7 +134,21 @@ REF-003,95.00,90.00,95.00,12.35,FAC-002,2026-02-20`;
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="min-h-screen bg-[#0a0f1a] p-6">
+        <div className="space-y-6">
+        {/* Navbar superior */}
+        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Importar Costos</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <NotificationDropdown />
+            <UserDropdown />
+          </div>
+        </div>
+
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -377,6 +393,7 @@ REF-003,95.00,90.00,95.00,12.35,FAC-002,2026-02-20`;
             <p>4. Puedes usar la referencia OE del producto o su ID numérico (idprod)</p>
           </CardContent>
         </Card>
+        </div>
       </div>
     </DashboardLayout>
   );
