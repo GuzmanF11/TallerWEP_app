@@ -354,8 +354,8 @@ export default function AjustePreciosV2Page() {
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="flex items-center justify-center h-screen bg-[#0a0f1a]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0e88c9]"></div>
+        <div className="flex items-center justify-center h-screen bg-slate-50 dark:bg-surface-deep">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
         </div>
       </DashboardLayout>
     );
@@ -363,18 +363,18 @@ export default function AjustePreciosV2Page() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-4">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-4">
         {/* Navbar */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-4">
+        <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-4">
           <div className="flex items-center gap-3">
             {productoSeleccionado && (
-              <Button variant="ghost" size="icon" onClick={volverALista} className="text-slate-400 hover:text-slate-200">
+              <Button variant="ghost" size="icon" onClick={volverALista} className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             )}
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">
               {productoSeleccionado ? 'Ajuste de Precios' : 'Seleccionar Producto'}
             </span>
           </div>
@@ -400,25 +400,25 @@ export default function AjustePreciosV2Page() {
               {productosFiltrados.slice(0, 50).map(producto => (
                 <Card 
                   key={producto.idprod}
-                  className="bg-[#0d1523] border-[#1e2a3b] hover:border-[#0e88c9]/50 cursor-pointer transition-colors"
+                  className="bg-gradient-to-br from-white to-slate-50 dark:from-background dark:to-background border border-sky-200/80 dark:border-secondary shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-none hover:border-primary/60 hover:shadow-[0_12px_28px_rgba(14,136,201,0.14)] cursor-pointer transition-all"
                   onClick={() => seleccionarProducto(producto.idprod)}
                 >
                   <CardContent className="p-4 flex items-center gap-4">
-                    <div className="h-16 w-16 rounded bg-slate-900 flex-shrink-0 overflow-hidden">
+                    <div className="h-16 w-16 rounded-xl bg-slate-100 dark:bg-slate-900 flex-shrink-0 overflow-hidden border border-slate-200 dark:border-transparent">
                       {producto.imagen_principal ? (
                         <Image src={producto.imagen_principal} alt="" width={64} height={64} className="object-cover h-full w-full" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Package className="h-8 w-8 text-slate-600" />
+                          <Package className="h-8 w-8 text-slate-400 dark:text-slate-600" />
                         </div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-slate-200 truncate">{producto.nombre}</p>
-                      <p className="text-xs text-slate-500">ID: {producto.idprod}</p>
-                      <p className="text-sm text-emerald-400 font-mono">Costo: ${Number(producto.costo || 0).toFixed(2)}</p>
+                      <p className="font-medium text-slate-800 dark:text-slate-200 truncate">{producto.nombre}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">ID: {producto.idprod}</p>
+                      <p className="text-sm text-emerald-600 dark:text-emerald-400 font-mono">Costo: ${Number(producto.costo || 0).toFixed(2)}</p>
                     </div>
-                    <Calculator className="h-5 w-5 text-[#0e88c9]" />
+                    <Calculator className="h-5 w-5 text-primary" />
                   </CardContent>
                 </Card>
               ))}
@@ -426,8 +426,8 @@ export default function AjustePreciosV2Page() {
 
             {productosFiltrados.length === 0 && (
               <div className="text-center py-12">
-                <Package className="mx-auto h-12 w-12 text-slate-600" />
-                <p className="mt-2 text-slate-400">No se encontraron productos</p>
+                <Package className="mx-auto h-12 w-12 text-slate-400 dark:text-slate-600" />
+                <p className="mt-2 text-slate-500 dark:text-slate-400">No se encontraron productos</p>
               </div>
             )}
           </div>
@@ -446,7 +446,7 @@ export default function AjustePreciosV2Page() {
 
             {/* Resultados de búsqueda rápida */}
             {searchTerm && productosFiltrados.length > 0 && (
-              <div className="bg-[#0d1523] border border-[#1e2a3b] rounded-lg max-h-48 overflow-y-auto">
+              <div className="bg-white dark:bg-background border border-slate-200 dark:border-secondary rounded-lg max-h-48 overflow-y-auto">
                 {productosFiltrados.slice(0, 10).map(producto => (
                   <div
                     key={producto.idprod}
@@ -454,22 +454,22 @@ export default function AjustePreciosV2Page() {
                       seleccionarProducto(producto.idprod);
                       setSearchTerm('');
                     }}
-                    className={`flex items-center gap-3 p-2 cursor-pointer hover:bg-[#1e2a3b] transition-colors ${
-                      producto.idprod === productoSeleccionado?.idprod ? 'bg-[#0e88c9]/20 border-l-2 border-[#0e88c9]' : ''
+                    className={`flex items-center gap-3 p-2 cursor-pointer hover:bg-sky-50 dark:hover:bg-secondary transition-colors ${
+                      producto.idprod === productoSeleccionado?.idprod ? 'bg-primary/10 dark:bg-primary/20 border-l-2 border-primary' : ''
                     }`}
                   >
-                    <div className="h-10 w-10 rounded bg-slate-900 flex-shrink-0 overflow-hidden">
+                    <div className="h-10 w-10 rounded bg-slate-100 dark:bg-slate-900 flex-shrink-0 overflow-hidden">
                       {producto.imagen_principal ? (
                         <Image src={producto.imagen_principal} alt="" width={40} height={40} className="object-cover h-full w-full" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Package className="h-5 w-5 text-slate-600" />
+                          <Package className="h-5 w-5 text-slate-400 dark:text-slate-600" />
                         </div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-200 truncate">{producto.nombre}</p>
-                      <p className="text-xs text-slate-500">ID: {producto.idprod} | Costo: ${parseFloat(String(producto.costo) || '0').toFixed(2)}</p>
+                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">{producto.nombre}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">ID: {producto.idprod} | Costo: ${parseFloat(String(producto.costo) || '0').toFixed(2)}</p>
                     </div>
                   </div>
                 ))}
@@ -480,24 +480,24 @@ export default function AjustePreciosV2Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Info del producto */}
             <div className="lg:col-span-4">
-              <Card className="bg-[#0d1523] border-[#1e2a3b]">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-background dark:to-background border border-sky-200/80 dark:border-secondary shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-slate-200">Información del Producto</CardTitle>
+                  <CardTitle className="text-lg text-slate-800 dark:text-slate-200">Información del Producto</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="h-20 w-20 rounded bg-slate-900 overflow-hidden flex-shrink-0">
+                    <div className="h-20 w-20 rounded bg-slate-100 dark:bg-slate-900 overflow-hidden flex-shrink-0 border border-slate-200 dark:border-transparent">
                       {productoSeleccionado.imagen_principal ? (
                         <Image src={productoSeleccionado.imagen_principal} alt="" width={80} height={80} className="object-cover h-full w-full" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Package className="h-10 w-10 text-slate-600" />
+                          <Package className="h-10 w-10 text-slate-400 dark:text-slate-600" />
                         </div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-slate-200">{productoSeleccionado.nombre}</p>
-                      <p className="text-xs text-slate-500">ID: {productoSeleccionado.idprod}</p>
+                      <p className="font-semibold text-slate-800 dark:text-slate-200">{productoSeleccionado.nombre}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">ID: {productoSeleccionado.idprod}</p>
                     </div>
                     {/* Botón ventana flotante */}
                     <Button 
@@ -522,52 +522,52 @@ export default function AjustePreciosV2Page() {
                         precio5: precios[4]?.precio || 0,
                         precio6: precios[5]?.precio || 0
                       })}
-                      className="h-8 px-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500/20"
+                      className="h-8 px-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500/20"
                       title="Abrir en ventana flotante"
                     >
                       <ExternalLink className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-700">
+                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-200 dark:border-slate-700">
                     <div>
-                      <Label className="text-xs text-slate-500">Costo Base</Label>
-                      <p className="text-lg font-mono text-slate-300">${productoSeleccionado.costo.toFixed(2)}</p>
+                      <Label className="text-xs text-slate-500 dark:text-slate-400">Costo Base</Label>
+                      <p className="text-lg font-mono text-slate-700 dark:text-slate-300">${productoSeleccionado.costo.toFixed(2)}</p>
                     </div>
                     <div>
-                      <Label className="text-xs text-slate-500">Costo Local</Label>
-                      <p className="text-lg font-mono text-emerald-400">${productoSeleccionado.costo_local.toFixed(2)}</p>
+                      <Label className="text-xs text-slate-500 dark:text-slate-400">Costo Local</Label>
+                      <p className="text-lg font-mono text-emerald-600 dark:text-emerald-400">${productoSeleccionado.costo_local.toFixed(2)}</p>
                     </div>
                     <div>
-                      <Label className="text-xs text-slate-500">IVA Pagado</Label>
-                      <p className="text-lg font-mono text-slate-300">${productoSeleccionado.iva_pagado.toFixed(2)}</p>
+                      <Label className="text-xs text-slate-500 dark:text-slate-400">IVA Pagado</Label>
+                      <p className="text-lg font-mono text-slate-700 dark:text-slate-300">${productoSeleccionado.iva_pagado.toFixed(2)}</p>
                     </div>
                     <div>
-                      <Label className="text-xs text-slate-500">Factor IVA</Label>
-                      <p className="text-lg font-mono text-slate-300">{(factores.iva * 100).toFixed(0)}%</p>
+                      <Label className="text-xs text-slate-500 dark:text-slate-400">Factor IVA</Label>
+                      <p className="text-lg font-mono text-slate-700 dark:text-slate-300">{(factores.iva * 100).toFixed(0)}%</p>
                     </div>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-700">
-                    <Label className="text-xs text-slate-500 mb-2 block">Factor Renta (Estimación)</Label>
-                    <p className="text-lg font-mono text-yellow-400">{(factores.renta * 100).toFixed(0)}%</p>
+                  <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                    <Label className="text-xs text-slate-500 dark:text-slate-400 mb-2 block">Factor Renta (Estimación)</Label>
+                    <p className="text-lg font-mono text-amber-600 dark:text-yellow-400">{(factores.renta * 100).toFixed(0)}%</p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Justificación */}
-              <Card className="bg-[#0d1523] border-[#1e2a3b] mt-4">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-background dark:to-background border border-sky-200/80 dark:border-secondary shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-none mt-4">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-slate-200">Justificación del Ajuste *</CardTitle>
+                  <CardTitle className="text-lg text-slate-800 dark:text-slate-200">Justificación del Ajuste *</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Textarea
                     placeholder="Explica el motivo del ajuste de precios..."
                     value={razon}
                     onChange={(e) => setRazon(e.target.value)}
-                    className="bg-[#141e2e] border-slate-700 text-slate-200 min-h-[100px]"
+                    className="bg-white dark:bg-card border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 min-h-[100px]"
                   />
-                  <p className="text-xs text-slate-500 mt-2">Esta justificación se guardará en el historial</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Esta justificación se guardará en el historial</p>
                 </CardContent>
               </Card>
 
@@ -575,7 +575,7 @@ export default function AjustePreciosV2Page() {
               <Button
                 onClick={guardarPrecios}
                 disabled={saving}
-                className="w-full mt-4 h-12 bg-[#0e88c9] hover:bg-[#0e88c9]/90 text-white"
+                className="w-full mt-4 h-12 bg-primary hover:bg-primary/90 text-white"
               >
                 <Save className="h-5 w-5 mr-2" />
                 {saving ? 'Guardando...' : 'Guardar Todos los Precios'}
@@ -584,19 +584,19 @@ export default function AjustePreciosV2Page() {
 
             {/* Tabla de precios */}
             <div className="lg:col-span-8">
-              <Card className="bg-[#0d1523] border-[#1e2a3b]">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-background dark:to-background border border-sky-200/80 dark:border-secondary shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-slate-200 flex items-center gap-2">
-                    <Calculator className="h-5 w-5 text-[#0e88c9]" />
+                  <CardTitle className="text-lg text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-primary" />
                     Ajuste de Precios - Fórmula FoxPro
                   </CardTitle>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Selecciona el modo de cálculo para cada tipo de precio: Porcentaje, Precio o Ganancia
                   </p>
                 </CardHeader>
                 <CardContent>
                   {/* Encabezados */}
-                  <div className="grid grid-cols-12 gap-2 mb-2 px-2 text-xs font-medium text-slate-500 uppercase">
+                  <div className="grid grid-cols-12 gap-2 mb-2 px-2 text-xs font-medium text-slate-800 dark:text-slate-500 uppercase">
                     <div className="col-span-2">Tipo</div>
                     <div className="col-span-3 text-center">Modo</div>
                     <div className="col-span-2 text-center">% Porcentaje</div>
@@ -624,8 +624,8 @@ export default function AjustePreciosV2Page() {
                             onClick={() => handleModoChange(index, 'porcentaje')}
                             className={`px-2 py-1 text-xs rounded transition-colors ${
                               precio.modo === 'porcentaje' 
-                                ? 'bg-[#0e88c9] text-white' 
-                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                ? 'bg-primary text-white' 
+                                : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700'
                             }`}
                           >
                             <Percent className="h-3 w-3 inline mr-1" />%
@@ -635,8 +635,8 @@ export default function AjustePreciosV2Page() {
                             onClick={() => handleModoChange(index, 'precio')}
                             className={`px-2 py-1 text-xs rounded transition-colors ${
                               precio.modo === 'precio' 
-                                ? 'bg-[#0e88c9] text-white' 
-                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                ? 'bg-primary text-white' 
+                                : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700'
                             }`}
                           >
                             <DollarSign className="h-3 w-3 inline mr-1" />$
@@ -646,8 +646,8 @@ export default function AjustePreciosV2Page() {
                             onClick={() => handleModoChange(index, 'ganancia')}
                             className={`px-2 py-1 text-xs rounded transition-colors ${
                               precio.modo === 'ganancia' 
-                                ? 'bg-[#0e88c9] text-white' 
-                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                ? 'bg-primary text-white' 
+                                : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700'
                             }`}
                           >
                             <TrendingUp className="h-3 w-3 inline mr-1" />G
@@ -666,8 +666,8 @@ export default function AjustePreciosV2Page() {
                             disabled={precio.modo !== 'porcentaje'}
                             className={`h-8 text-sm font-mono text-center ${
                               precio.modo === 'porcentaje' 
-                                ? 'bg-[#141e2e] border-[#0e88c9] text-white' 
-                                : 'bg-slate-900/50 border-slate-700 text-slate-500'
+                                ? 'bg-sky-50 dark:bg-card border-primary text-slate-800 dark:text-white' 
+                                : 'bg-slate-100 dark:bg-slate-900/50 border-slate-700 text-slate-800 dark:text-slate-500'
                             }`}
                           />
                         </div>
@@ -684,8 +684,8 @@ export default function AjustePreciosV2Page() {
                             disabled={precio.modo !== 'precio'}
                             className={`h-8 text-sm font-mono text-center ${
                               precio.modo === 'precio' 
-                                ? 'bg-[#141e2e] border-[#0e88c9] text-white' 
-                                : 'bg-slate-900/50 border-slate-700 text-slate-500'
+                                ? 'bg-sky-50 dark:bg-card border-primary text-slate-800 dark:text-white' 
+                                : 'bg-slate-100 dark:bg-slate-900/50 border-slate-700 text-slate-800 dark:text-slate-500'
                             }`}
                           />
                         </div>
@@ -702,8 +702,8 @@ export default function AjustePreciosV2Page() {
                             disabled={precio.modo !== 'ganancia'}
                             className={`h-8 text-sm font-mono text-center ${
                               precio.modo === 'ganancia' 
-                                ? 'bg-[#141e2e] border-[#0e88c9] text-white' 
-                                : 'bg-slate-900/50 border-slate-700 text-slate-500'
+                                ? 'bg-sky-50 dark:bg-card border-primary text-slate-800 dark:text-white' 
+                                : 'bg-slate-100 dark:bg-slate-900/50 border-slate-700 text-slate-800 dark:text-slate-500'
                             }`}
                           />
                         </div>
@@ -714,7 +714,7 @@ export default function AjustePreciosV2Page() {
                             variant="ghost"
                             size="icon"
                             onClick={() => handleValorBlur(index)}
-                            className="h-8 w-8 text-slate-400 hover:text-[#0e88c9]"
+                            className="h-8 w-8 text-slate-400 hover:text-primary"
                             title="Recalcular"
                           >
                             <RefreshCw className="h-4 w-4" />
@@ -725,20 +725,20 @@ export default function AjustePreciosV2Page() {
                   </div>
 
                   {/* Leyenda */}
-                  <div className="mt-4 p-3 bg-slate-900/50 rounded-lg">
-                    <p className="text-xs text-slate-400 mb-2 font-medium">Fórmulas (Lógica FoxPro - El Salvador):</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-slate-500">
+                  <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-transparent">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-2 font-medium">Fórmulas (Lógica FoxPro - El Salvador):</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-slate-500 dark:text-slate-400">
                       <div>
-                        <span className="text-[#0e88c9]">Por %:</span> Precio = CostoLocal × (1 + %/100)
+                        <span className="text-primary">Por %:</span> Precio = CostoLocal × (1 + %/100)
                       </div>
                       <div>
-                        <span className="text-[#0e88c9]">Por $:</span> % = ((Precio / CostoLocal) - 1) × 100
+                        <span className="text-primary">Por $:</span> % = ((Precio / CostoLocal) - 1) × 100
                       </div>
                       <div>
-                        <span className="text-[#0e88c9]">Por G:</span> Precio = ((G + Costo) / 0.8 - IVA) / 0.87
+                        <span className="text-primary">Por G:</span> Precio = ((G + Costo) / 0.8 - IVA) / 0.87
                       </div>
                     </div>
-                    <p className="text-xs text-slate-500 mt-2">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                       Ganancia = (Precio - IVA) × (1 - {(factores.renta * 100).toFixed(0)}%) - CostoLocal
                     </p>
                   </div>
@@ -748,19 +748,19 @@ export default function AjustePreciosV2Page() {
           </div>
 
           {/* Historial de Ajustes - Ancho completo */}
-          <Card className="bg-[#0d1523] border-[#1e2a3b] mt-6">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-background dark:to-background border border-sky-200/80 dark:border-secondary shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-none mt-6">
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg text-slate-200">Historial de Ajustes</CardTitle>
+              <CardTitle className="text-lg text-slate-800 dark:text-slate-200">Historial de Ajustes</CardTitle>
             </CardHeader>
             <CardContent>
               {historial.length === 0 ? (
-                <p className="text-sm text-slate-500 text-center py-4">No hay ajustes previos para este producto</p>
+                <p className="text-sm text-slate-500 dark:text-slate-500 text-center py-4">No hay ajustes previos para este producto</p>
               ) : (
                 <div className="space-y-4">
                   {historial.map((item) => (
-                    <div key={item.idajuste} className="bg-[#141e2e] border border-[#1e2a3b] rounded-lg p-4">
+                    <div key={item.idajuste} className="bg-slate-50 dark:bg-card border border-slate-200 dark:border-secondary rounded-lg p-4">
                       <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                           <span>📅</span>
                           <span>
                             {new Date(item.fecha).toLocaleDateString('es-SV', { 
@@ -769,7 +769,7 @@ export default function AjustePreciosV2Page() {
                             })}
                           </span>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                           <span>👤</span>
                           <span>{item.usuario_nombre || 'Usuario'}</span>
                         </div>
@@ -779,12 +779,12 @@ export default function AjustePreciosV2Page() {
                       <div className="mb-3 overflow-x-auto">
                         <table className="w-full text-sm">
                           <thead>
-                            <tr className="border-b border-[#1e2a3b]">
-                              <th className="text-left py-2 px-3 text-slate-500 font-medium">Precio</th>
-                              <th className="text-right py-2 px-3 text-red-400 font-medium">Anterior</th>
+                            <tr className="border-b border-slate-200 dark:border-secondary">
+                              <th className="text-left py-2 px-3 text-slate-600 dark:text-slate-500 font-medium">Precio</th>
+                              <th className="text-right py-2 px-3 text-red-500 dark:text-red-400 font-medium">Anterior</th>
                               <th className="text-center py-2 px-3 text-slate-500">→</th>
-                              <th className="text-right py-2 px-3 text-green-400 font-medium">Nuevo</th>
-                              <th className="text-right py-2 px-3 text-slate-500 font-medium">Diferencia</th>
+                              <th className="text-right py-2 px-3 text-emerald-600 dark:text-green-400 font-medium">Nuevo</th>
+                              <th className="text-right py-2 px-3 text-slate-600 dark:text-slate-500 font-medium">Diferencia</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -801,8 +801,8 @@ export default function AjustePreciosV2Page() {
                               const diff = nuevoNum - anteriorNum;
                               const cambio = diff !== 0;
                               return (
-                                <tr key={idx} className={`border-b border-[#1e2a3b]/50 ${cambio ? 'bg-[#0e88c9]/5' : ''}`}>
-                                  <td className="py-2 px-3 text-slate-300">{precio.nombre}</td>
+                                <tr key={idx} className={`border-b border-slate-100 dark:border-secondary/50 ${cambio ? 'bg-sky-50 dark:bg-primary/5' : ''}`}>
+                                  <td className="py-2 px-3 text-slate-700 dark:text-slate-300">{precio.nombre}</td>
                                   <td className="py-2 px-3 text-right font-mono text-red-400/80">
                                     ${anteriorNum.toFixed(2)}
                                   </td>
@@ -810,7 +810,7 @@ export default function AjustePreciosV2Page() {
                                   <td className="py-2 px-3 text-right font-mono text-green-400">
                                     ${nuevoNum.toFixed(2)}
                                   </td>
-                                  <td className={`py-2 px-3 text-right font-mono ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-slate-500'}`}>
+                                  <td className={`py-2 px-3 text-right font-mono ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-slate-800 dark:text-slate-500'}`}>
                                     {diff > 0 ? '+' : ''}{diff.toFixed(2)}
                                   </td>
                                 </tr>
@@ -820,9 +820,9 @@ export default function AjustePreciosV2Page() {
                         </table>
                       </div>
 
-                      <div className="text-sm text-slate-300 pt-2 border-t border-[#1e2a3b]">
-                        <span className="font-medium text-[#0e88c9]">Razón:</span>
-                        <p className="mt-1 text-slate-400">{item.razon_justificacion || 'Sin justificación'}</p>
+                      <div className="text-sm text-slate-700 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-secondary">
+                        <span className="font-medium text-primary">Razón:</span>
+                        <p className="mt-1 text-slate-500 dark:text-slate-400">{item.razon_justificacion || 'Sin justificación'}</p>
                       </div>
                     </div>
                   ))}

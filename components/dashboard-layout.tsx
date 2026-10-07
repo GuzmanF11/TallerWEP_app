@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Sidebar } from './sidebar';
 import { useNotifications } from '@/contexts/notification-context';
-import { CheckCircle, AlertTriangle, Clock, X } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Clock, X, Menu } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -22,6 +22,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState<TimeToast | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const timeChecked = useRef(false);
   const router = useRouter();
   const { addNotification } = useNotifications();
@@ -127,10 +128,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-lightBg dark:bg-[#0d1523]">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto"></div>
-          <p className="mt-4 text-lightAccent dark:text-[#0e88c9]">Cargando...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-primary">Cargando...</p>
         </div>
       </div>
     );
@@ -141,9 +142,20 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   return (
-    <div className="flex min-h-screen bg-lightBg dark:bg-[#0d1523] text-slate-800 dark:text-slate-100">
-      <Sidebar />
-      <main className="flex-1 overflow-x-hidden">
+    <div className="flex min-h-screen bg-background text-foreground">
+      <Sidebar mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
+      <main className="flex-1 overflow-x-hidden min-w-0">
+        <div className="lg:hidden sticky top-0 z-30 flex items-center gap-3 border-b border-border bg-card/95 backdrop-blur px-4 py-3">
+          <button
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground hover:text-primary"
+            aria-label="Abrir menú"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+          <span className="text-sm font-semibold text-primary">Taller Web</span>
+        </div>
         <div className="p-6 space-y-6 min-h-full">
           {children}
         </div>
@@ -161,10 +173,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className={`
             min-w-[300px] max-w-[380px] rounded-xl border shadow-2xl backdrop-blur-xl p-4
             ${toast.type === 'success' 
-              ? 'bg-emerald-950/90 border-emerald-500/30 shadow-emerald-500/10' 
+              ? 'bg-emerald-50/95 dark:bg-emerald-950/90 border-emerald-200 dark:border-emerald-500/30 shadow-emerald-500/10' 
               : toast.type === 'warning'
-              ? 'bg-yellow-950/90 border-yellow-500/30 shadow-yellow-500/10'
-              : 'bg-red-950/90 border-red-500/30 shadow-red-500/10'
+              ? 'bg-amber-50/95 dark:bg-yellow-950/90 border-amber-200 dark:border-yellow-500/30 shadow-yellow-500/10'
+              : 'bg-red-50/95 dark:bg-red-950/90 border-red-200 dark:border-red-500/30 shadow-red-500/10'
             }
           `}>
             <div className="flex items-start gap-3">
@@ -190,23 +202,23 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 <div className="flex items-center gap-2">
                   <Clock className="h-3.5 w-3.5 text-slate-400" />
                   <span className={`text-sm font-semibold ${
-                    toast.type === 'success' ? 'text-emerald-300' 
-                    : toast.type === 'warning' ? 'text-yellow-300'
-                    : 'text-red-300'
+                    toast.type === 'success' ? 'text-emerald-700 dark:text-emerald-300' 
+                    : toast.type === 'warning' ? 'text-amber-700 dark:text-yellow-300'
+                    : 'text-red-700 dark:text-red-300'
                   }`}>
                     {toast.title}
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">{toast.message}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{toast.message}</p>
                 {toast.details && (
-                  <p className="text-xs font-mono text-slate-500 mt-1">{toast.details}</p>
+                  <p className="text-xs font-mono text-muted-foreground mt-1">{toast.details}</p>
                 )}
               </div>
 
               {/* Botón cerrar */}
               <button 
                 onClick={dismissToast}
-                className="flex-shrink-0 text-slate-500 hover:text-slate-300 transition-colors"
+                className="flex-shrink-0 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>

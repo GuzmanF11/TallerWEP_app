@@ -76,7 +76,7 @@ const EvolutionChart = memo(function EvolutionChart({ data, color, idprod }: { d
     return ({ active, payload, label }: any) => {
       if (!active || !payload?.length) return null;
       return (
-        <div className="bg-[#0d1523] border rounded-md px-2 py-1.5 shadow-lg" style={{ borderColor: color + '60' }}>
+        <div className="bg-background border rounded-md px-2 py-1.5 shadow-lg" style={{ borderColor: color + '60' }}>
           <p className="text-[9px] text-slate-500">{label}</p>
           <p className="text-xs font-bold" style={{ color }}>${parseFloat(payload[0].value).toFixed(2)}</p>
         </div>
@@ -84,13 +84,13 @@ const EvolutionChart = memo(function EvolutionChart({ data, color, idprod }: { d
     };
   }, [color]);
 
-  if (!Lib) return <div className="h-[100px] bg-[#0a0f1a] rounded-lg border border-slate-800/30 animate-pulse" />;
+  if (!Lib) return <div className="h-[100px] bg-surface-deep rounded-lg border border-border/30 animate-pulse" />;
 
   const { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip: RTooltip } = Lib;
 
   // Usar dimensiones fijas en lugar de ResponsiveContainer para mejor rendimiento
   return (
-    <div ref={containerRef} className="bg-[#0a0f1a] rounded-lg overflow-hidden border border-slate-800/30">
+    <div ref={containerRef} className="bg-surface-deep rounded-lg overflow-hidden border border-border/30">
       <AreaChart width={380} height={100} data={memoizedData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
@@ -108,7 +108,7 @@ const EvolutionChart = memo(function EvolutionChart({ data, color, idprod }: { d
           stroke={color} 
           strokeWidth={2} 
           fill={`url(#${gradientId})`} 
-          dot={{ r: 3, fill: color, stroke: '#0d1523', strokeWidth: 1.5 }} 
+          dot={{ r: 3, fill: color, stroke: 'var(--background)', strokeWidth: 1.5 }} 
           activeDot={{ r: 5, fill: color, stroke: '#fff', strokeWidth: 2 }} 
           isAnimationActive={false}
         />
@@ -237,13 +237,13 @@ export function PriceHistoryChart({ idprod, currentPrices }: PriceHistoryChartPr
 
         {/* AreaChart - solo si hay historial con suficientes datos */}
         {loading ? (
-          <div className="h-[100px] bg-[#0a0f1a] rounded-lg border border-slate-800/30 flex items-center justify-center">
+          <div className="h-[100px] bg-surface-deep rounded-lg border border-border/30 flex items-center justify-center">
             <span className="text-[10px] text-slate-500 animate-pulse">Cargando historial...</span>
           </div>
         ) : hasHistory && chartData.length >= 2 ? (
           <EvolutionChart data={chartData} color={selected.color} idprod={idprod} />
         ) : (
-          <div className="h-[60px] bg-[#0a0f1a] rounded-lg border border-slate-800/30 flex items-center justify-center">
+          <div className="h-[60px] bg-surface-deep rounded-lg border border-border/30 flex items-center justify-center">
             <span className="text-[10px] text-slate-500">Sin historial de cambios</span>
           </div>
         )}

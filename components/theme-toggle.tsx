@@ -18,8 +18,8 @@ export function ThemeToggle() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="border-[#0e88c9]/30 bg-transparent text-slate-300 hover:text-[#0e88c9]"
-      title={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+      className="border-border bg-card dark:bg-transparent text-muted-foreground hover:text-primary"
+      title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
     >
       {theme === 'dark' ? (
         <Sun className="h-4 w-4" />

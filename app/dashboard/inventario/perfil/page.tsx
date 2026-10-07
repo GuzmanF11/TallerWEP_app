@@ -591,10 +591,10 @@ function PerfilProductoPageContent() {
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="flex flex-col items-center justify-center h-screen bg-[#0a0f1a]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0e88c9] mb-4"></div>
-          <div className="text-lg text-slate-200">Cargando producto...</div>
-          {idParam && <div className="text-sm text-slate-400 mt-2">ID: {idParam}</div>}
+        <div className="flex flex-col items-center justify-center h-screen bg-slate-50 dark:bg-surface-deep">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary mb-4"></div>
+          <div className="text-lg text-slate-800 dark:text-slate-200">Cargando producto...</div>
+          {idParam && <div className="text-sm text-slate-500 dark:text-slate-400 mt-2">ID: {idParam}</div>}
         </div>
       </DashboardLayout>
     );
@@ -603,13 +603,13 @@ function PerfilProductoPageContent() {
   // Vista principal
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-4">
+      <div className="min-h-screen bg-background dark:bg-surface-deep p-4">
         {/* Navbar superior */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-4">
+        <div className="rounded-xl border border-slate-200/90 dark:border-primary/30 bg-white dark:bg-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.06)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-4">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Perfil del Producto</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm font-medium tracking-[0.18em] uppercase text-slate-800 dark:text-slate-200">Perfil del Producto</span>
           </div>
           <div className="flex items-center gap-3">
             <NotificationDropdown />
@@ -621,8 +621,8 @@ function PerfilProductoPageContent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Columna Izquierda: Lista de productos con buscador */}
           <div className="lg:col-span-4 space-y-3">
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl overflow-hidden">
-              <CardHeader className="py-2 px-3 border-b border-slate-800">
+            <Card className="bg-white dark:bg-gradient-to-br dark:from-card dark:to-background border border-slate-200/90 dark:border-primary/30 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_10px_28px_rgba(15,23,42,0.07)] dark:shadow-lg rounded-xl overflow-hidden">
+              <CardHeader className="py-2 px-3 border-b border-slate-200 dark:border-slate-800">
                 <SearchFilters
                   searchTerm={searchQuery}
                   onSearchChange={setSearchQuery}
@@ -631,7 +631,7 @@ function PerfilProductoPageContent() {
                   compact={true}
                 />
               </CardHeader>
-              <div ref={listRef} className="h-[calc(100vh-280px)] overflow-y-auto divide-y divide-slate-800/50">
+              <div ref={listRef} className="h-[calc(100vh-280px)] overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/50">
                 {productosFiltrados.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-slate-500 p-4">
                     <Package className="h-8 w-8 mb-2" />
@@ -645,26 +645,26 @@ function PerfilProductoPageContent() {
                       onDoubleClick={() => selectProduct(prod.idprod)}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors ${
-                        idx === selectedIndex ? 'bg-[#0e88c9]/20 border-l-2 border-[#0e88c9]' : 'hover:bg-slate-800/50'
-                      } ${producto?.idprod === prod.idprod ? 'bg-emerald-500/10 border-l-2 border-emerald-500' : ''}`}
+                        idx === selectedIndex ? 'bg-primary/10 dark:bg-primary/20 border-l-2 border-primary' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                      } ${producto?.idprod === prod.idprod ? 'bg-emerald-50 dark:bg-emerald-500/10 border-l-2 border-emerald-500' : ''}`}
                     >
-                      <div className="h-10 w-10 rounded bg-slate-900 flex-shrink-0 overflow-hidden">
+                      <div className="h-10 w-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex-shrink-0 overflow-hidden border border-slate-200/80 dark:border-transparent">
                         {prod.imagen_principal ? (
                           <Image src={prod.imagen_principal} alt="" width={40} height={40} className="object-cover h-full w-full" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
-                            <Package className="h-4 w-4 text-slate-600" />
+                            <Package className="h-4 w-4 text-slate-400 dark:text-slate-600" />
                           </div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-slate-200 truncate">{prod.nombre}</p>
-                        <p className="text-xs text-slate-500">OE: {prod.OE || '-'}</p>
+                        <p className="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">{prod.nombre}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">OE: {prod.OE || '-'}</p>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <Badge variant="outline" className="text-[10px] px-1 py-0 h-4 bg-[#0e88c9]/10 text-[#0e88c9] border-[#0e88c9]/30">
+                          <Badge variant="outline" className="text-[10px] px-1 py-0 h-4 bg-primary/10 text-primary border-primary/30">
                             {(prod as any).categoria_nueva_nombre || prod.categoria_nombre || '-'}
                           </Badge>
-                          <span className={`text-[10px] font-medium ${prod.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          <span className={`text-[10px] font-medium ${prod.stock_contable > 0 ? 'text-emerald-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                             Stock: {prod.stock_contable}
                           </span>
                         </div>
@@ -676,8 +676,8 @@ function PerfilProductoPageContent() {
               
               {/* Controles de Paginación */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-between p-2 border-t border-slate-700 bg-slate-900/50">
-                  <span className="text-xs text-slate-400">
+                <div className="flex items-center justify-between p-2 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
                     Pág. {currentPage}/{totalPages} ({totalProductos} total)
                   </span>
                   <div className="flex items-center gap-1">
@@ -686,17 +686,17 @@ function PerfilProductoPageContent() {
                       size="sm"
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                       disabled={currentPage === 1 || loadingList}
-                      className="h-6 px-2 text-xs border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="h-6 px-2 text-xs border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       <ChevronLeft className="h-3 w-3" />
                     </Button>
-                    <span className="text-xs text-slate-300 px-2">{currentPage}</span>
+                    <span className="text-xs text-slate-700 dark:text-slate-300 px-2">{currentPage}</span>
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                       disabled={currentPage === totalPages || loadingList}
-                      className="h-6 px-2 text-xs border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="h-6 px-2 text-xs border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       <ChevronRight className="h-3 w-3" />
                     </Button>
@@ -707,16 +707,16 @@ function PerfilProductoPageContent() {
 
             {/* Info del producto seleccionado (preview) */}
             {productoPreview && (
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl">
+              <Card className="bg-white dark:bg-gradient-to-br dark:from-card dark:to-background border border-slate-200/90 dark:border-primary/30 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_10px_28px_rgba(15,23,42,0.07)] dark:shadow-lg rounded-xl">
                 <CardContent className="p-3 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-400">Producto Seleccionado</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">Producto Seleccionado</span>
                     <div className="flex gap-1">
                       {/* Botón para abrir en pestaña */}
                       <Button 
                         size="sm" 
                         onClick={() => selectProduct(productoPreview.idprod)}
-                        className="h-7 text-xs bg-[#0e88c9]/10 text-[#0e88c9] border border-[#0e88c9]/40 hover:bg-[#0e88c9]/20"
+                        className="h-7 text-xs bg-primary/10 text-primary border border-primary/40 hover:bg-primary/20"
                         title="Abrir en pestaña"
                       >
                         <Layers className="h-3 w-3 mr-1" />
@@ -726,7 +726,7 @@ function PerfilProductoPageContent() {
                       <Button 
                         size="sm" 
                         onClick={() => openFloatingWindow(producto || productoPreview)}
-                        className="h-7 text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500/20"
+                        className="h-7 text-xs bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/40 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"
                         title="Abrir en ventana flotante"
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />
@@ -737,24 +737,24 @@ function PerfilProductoPageContent() {
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
                       <span className="text-slate-500">ID:</span>
-                      <span className="text-slate-300 ml-1">{productoPreview.idprod}</span>
+                      <span className="text-slate-800 dark:text-slate-300 ml-1">{productoPreview.idprod}</span>
                     </div>
                     <div>
                       <span className="text-slate-500">Marca:</span>
-                      <span className="text-slate-300 ml-1">{productoPreview.marca || '-'}</span>
+                      <span className="text-slate-800 dark:text-slate-300 ml-1">{productoPreview.marca || '-'}</span>
                     </div>
                     <div>
                       <span className="text-slate-500">Stock:</span>
-                      <span className={`ml-1 ${productoPreview.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                      <span className={`ml-1 ${productoPreview.stock_contable > 0 ? 'text-emerald-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                         {productoPreview.stock_contable}
                       </span>
                     </div>
                     <div>
                       <span className="text-slate-500">Costo:</span>
-                      <span className="text-slate-300 ml-1">${productoPreview.costo || '0'}</span>
+                      <span className="text-slate-800 dark:text-slate-300 ml-1">${productoPreview.costo || '0'}</span>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-500 italic">Doble click en lista para ver perfil completo</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic">Doble click en lista para ver perfil completo</p>
                 </CardContent>
               </Card>
             )}
@@ -765,14 +765,14 @@ function PerfilProductoPageContent() {
             {/* Pestañas dinámicas */}
             {openTabs.length > 0 && (
               <div className="mb-3">
-                <div className="bg-[#0d1523] border border-[#1e2a3b] p-1 rounded-lg flex gap-1 flex-wrap">
+                <div className="bg-white dark:bg-background border border-slate-200/90 dark:border-secondary p-1 rounded-lg flex gap-1 flex-wrap">
                   {openTabs.map((tab) => (
                     <div
                       key={`tab-${tab.id}`}
                       className={`inline-flex items-center px-3 py-1.5 rounded text-sm font-medium transition-colors cursor-pointer ${
                         activeTabId === tab.id 
-                          ? 'bg-[#0e88c9] text-white' 
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-[#1e2a3b]'
+                          ? 'bg-primary text-white' 
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-secondary'
                       }`}
                       onClick={() => switchTab(tab)}
                     >
@@ -793,16 +793,16 @@ function PerfilProductoPageContent() {
 
             {/* Contenido del producto - Diseño como imagen de referencia */}
             {producto ? (
-              <div className="bg-[#0d1523] border border-[#1e2a3b] rounded-lg overflow-hidden">
+              <div className="bg-white dark:bg-background border border-slate-200/90 dark:border-secondary rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04),0_10px_28px_rgba(15,23,42,0.07)] dark:shadow-none">
                 {/* Header con nombre y botón editar */}
-                <div className="flex items-center justify-between px-5 py-3 border-b border-[#1e2a3b]">
+                <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-secondary">
                   <div>
-                    <div className="text-xl font-bold text-slate-200">{producto.nombre}</div>
+                    <div className="text-xl font-bold text-slate-900 dark:text-slate-200">{producto.nombre}</div>
                     <div className="text-sm text-slate-500">{producto.descripcion || ''}</div>
                   </div>
                   <Button
                     onClick={() => router.push(`/dashboard/inventario/editar-producto?id=${producto.idprod}`)}
-                    className="bg-[#0e88c9] hover:bg-[#0e88c9]/80 text-white"
+                    className="bg-primary hover:bg-primary/80 text-white"
                   >
                     <Edit className="h-4 w-4 mr-2" />
                     Editar Producto
@@ -812,8 +812,8 @@ function PerfilProductoPageContent() {
                 {/* Contenido principal: Imagen + Info */}
                 <div className="grid grid-cols-12">
                   {/* Imagen grande a la izquierda */}
-                  <div className="col-span-5 p-4 border-r border-[#1e2a3b]">
-                    <div className="relative aspect-square bg-slate-900/50 rounded-lg overflow-hidden">
+                  <div className="col-span-5 p-4 border-r border-slate-200 dark:border-secondary">
+                    <div className="relative aspect-square bg-slate-100 dark:bg-slate-900/50 rounded-lg overflow-hidden">
                       {getAllImages()[currentImageIndex] ? (
                         <Image
                           src={getAllImages()[currentImageIndex]}
@@ -823,7 +823,7 @@ function PerfilProductoPageContent() {
                         />
                       ) : (
                         <div className="flex items-center justify-center h-full">
-                          <Package className="h-24 w-24 text-slate-600" />
+                          <Package className="h-24 w-24 text-slate-300 dark:text-slate-600" />
                         </div>
                       )}
                       {getAllImages().length > 1 && (
@@ -843,7 +843,7 @@ function PerfilProductoPageContent() {
                           <button
                             key={`img-${idx}`}
                             onClick={() => setCurrentImageIndex(idx)}
-                            className={`w-12 h-12 rounded overflow-hidden border-2 ${idx === currentImageIndex ? 'border-[#0e88c9]' : 'border-slate-700'}`}
+                            className={`w-12 h-12 rounded overflow-hidden border-2 ${idx === currentImageIndex ? 'border-primary' : 'border-slate-200 dark:border-slate-700'}`}
                           >
                             <Image src={img} alt="" width={48} height={48} className="object-cover w-full h-full" />
                           </button>
@@ -855,41 +855,41 @@ function PerfilProductoPageContent() {
                   {/* Info apilada a la derecha */}
                   <div className="col-span-7">
                     {/* ID Producto y Stock */}
-                    <div className="grid grid-cols-2 border-b border-[#1e2a3b]">
-                      <div className="p-4 border-r border-[#1e2a3b]">
-                        <div className="text-xs text-slate-500 uppercase">ID Producto</div>
-                        <div className="text-2xl font-bold text-slate-200">{producto.idprod}</div>
+                    <div className="grid grid-cols-2 border-b border-slate-200 dark:border-secondary">
+                      <div className="p-4 border-r border-slate-200 dark:border-secondary">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">ID Producto</div>
+                        <div className="text-2xl font-bold text-slate-900 dark:text-slate-200">{producto.idprod}</div>
                       </div>
                       <div className="p-4">
-                        <div className="text-xs text-slate-500 uppercase">Stock</div>
-                        <div className={`text-2xl font-bold ${producto.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Stock</div>
+                        <div className={`text-2xl font-bold ${producto.stock_contable > 0 ? 'text-emerald-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                           {producto.stock_contable}
                         </div>
                       </div>
                     </div>
 
                     {/* Código Catálogo */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Código Catálogo</div>
-                      <div className="text-lg font-semibold text-amber-400">{getCodigoCatalogo(producto)}</div>
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Código Catálogo</div>
+                      <div className="text-lg font-semibold text-amber-600 dark:text-amber-400">{getCodigoCatalogo(producto)}</div>
                     </div>
 
                     {/* Referencia OE */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Referencia OE</div>
-                      <div className="text-lg font-semibold text-slate-200">{producto.OE || '-'}</div>
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Referencia OE</div>
+                      <div className="text-lg font-semibold text-slate-900 dark:text-slate-200">{producto.OE || '-'}</div>
                     </div>
 
                     {/* Marca */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Marca</div>
-                      <div className="text-lg font-semibold text-slate-200">{producto.marca || '-'}</div>
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Marca</div>
+                      <div className="text-lg font-semibold text-slate-900 dark:text-slate-200">{producto.marca || '-'}</div>
                     </div>
 
                     {/* Categoría - Usando el nuevo sistema jerárquico */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Categoría</div>
-                      <Badge variant="outline" className="mt-1 bg-[#0e88c9]/10 text-[#0e88c9] border-[#0e88c9]/30">
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Categoría</div>
+                      <Badge variant="outline" className="mt-1 bg-primary/10 text-primary border-primary/30">
                         {(producto as any).categoria_nueva_nombre 
                           ? `${(producto as any).idcategoria_nuevo} - ${(producto as any).categoria_nueva_nombre}` 
                           : producto.categoria_nombre || '-'}
@@ -897,18 +897,18 @@ function PerfilProductoPageContent() {
                     </div>
 
                     {/* Grupo y Subgrupo */}
-                    <div className="grid grid-cols-2 border-b border-[#1e2a3b]">
-                      <div className="p-4 border-r border-[#1e2a3b]">
-                        <div className="text-xs text-slate-500 uppercase">Grupo</div>
-                        <Badge variant="outline" className="mt-1 bg-green-500/10 text-green-400 border-green-500/30">
+                    <div className="grid grid-cols-2 border-b border-slate-200 dark:border-secondary">
+                      <div className="p-4 border-r border-slate-200 dark:border-secondary">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Grupo</div>
+                        <Badge variant="outline" className="mt-1 bg-emerald-50 dark:bg-green-500/10 text-emerald-700 dark:text-green-400 border-emerald-300 dark:border-green-500/30">
                           {(producto as any).grupo_nombre 
                             ? `${(producto as any).grupo_codigo} - ${(producto as any).grupo_nombre}` 
                             : '-'}
                         </Badge>
                       </div>
                       <div className="p-4">
-                        <div className="text-xs text-slate-500 uppercase">Subgrupo</div>
-                        <Badge variant="outline" className="mt-1 bg-purple-500/10 text-purple-400 border-purple-500/30">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Subgrupo</div>
+                        <Badge variant="outline" className="mt-1 bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-500/30">
                           {(producto as any).subgrupo_nombre 
                             ? `${(producto as any).subgrupo_codigo} - ${(producto as any).subgrupo_nombre}` 
                             : '-'}
@@ -918,94 +918,94 @@ function PerfilProductoPageContent() {
 
                     {/* Costo */}
                     <div className="p-4">
-                      <div className="text-xs text-slate-500 uppercase">Costo</div>
-                      <div className="text-2xl font-bold text-emerald-400">${producto.costo || '0.00'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Costo</div>
+                      <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">${producto.costo || '0.00'}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Fila inferior: Códigos */}
-                <div className="grid grid-cols-3 border-t border-[#1e2a3b]">
-                  <div className="p-4 border-r border-[#1e2a3b]">
-                    <div className="text-xs text-slate-500">Cód. Proveedor</div>
-                    <div className="text-sm font-medium text-slate-200">{producto.idprodprov || '-'}</div>
+                <div className="grid grid-cols-3 border-t border-slate-200 dark:border-secondary">
+                  <div className="p-4 border-r border-slate-200 dark:border-secondary">
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Cód. Proveedor</div>
+                    <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.idprodprov || '-'}</div>
                   </div>
-                  <div className="p-4 border-r border-[#1e2a3b]">
-                    <div className="text-xs text-slate-500">Cód. Paquete</div>
-                    <div className="text-sm font-medium text-slate-200">{producto.idprodpaquete || '-'}</div>
+                  <div className="p-4 border-r border-slate-200 dark:border-secondary">
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Cód. Paquete</div>
+                    <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.idprodpaquete || '-'}</div>
                   </div>
                   <div className="p-4">
-                    <div className="text-xs text-slate-500">Código Barras</div>
-                    <div className="text-sm font-medium text-slate-200">{producto.codigo_barras || '-'}</div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Código Barras</div>
+                    <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.codigo_barras || '-'}</div>
                   </div>
                 </div>
 
                 {/* Precios de Venta */}
-                <div className="border-t border-[#1e2a3b] p-4">
-                  <div className="text-xs text-slate-500 uppercase mb-3">Precios de Venta</div>
+                <div className="border-t border-slate-200 dark:border-secondary p-4">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 uppercase mb-3">Precios de Venta</div>
                   <div className="grid grid-cols-4 gap-4">
                     {precios.map((precio, idx) => (
                       <div key={`precio-${idx}`}>
-                        <div className="text-xs text-slate-500">{precio.tipo}</div>
-                        <div className="text-lg font-bold text-[#0e88c9]">${precio.valor.toFixed(2)}</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-400">{precio.tipo}</div>
+                        <div className="text-lg font-bold text-primary">${precio.valor.toFixed(2)}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Información Adicional */}
-                <div className="border-t border-[#1e2a3b] p-4">
-                  <div className="text-xs text-slate-500 uppercase mb-3">Información Adicional</div>
+                <div className="border-t border-slate-200 dark:border-secondary p-4">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 uppercase mb-3">Información Adicional</div>
                   <div className="grid grid-cols-4 gap-4">
                     <div>
-                      <div className="text-xs text-slate-500">Clase</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.clase || '-'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Clase</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.clase || '-'}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Lado</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.lado || '-'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Lado</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.lado || '-'}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Modelo</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.modelo || '-'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Modelo</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.modelo || '-'}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Estilo</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.estilo || '-'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Estilo</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.estilo || '-'}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Giro</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.giro || '-'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Giro</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.giro || '-'}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Peso</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.peso || '-'} {producto.unimedida || ''}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Peso</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.peso || '-'} {producto.unimedida || ''}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Exento IVA</div>
-                      <div className={`text-sm font-medium ${producto.exento ? 'text-yellow-400' : 'text-slate-400'}`}>{producto.exento ? 'Sí' : 'No'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Exento IVA</div>
+                      <div className={`text-sm font-medium ${producto.exento ? 'text-amber-600 dark:text-yellow-400' : 'text-slate-400'}`}>{producto.exento ? 'Sí' : 'No'}</div>
                     </div>
                   </div>
                   {producto.etiquetas && (
                     <div className="mt-3">
-                      <div className="text-xs text-slate-500">Etiquetas</div>
-                      <div className="text-sm font-medium text-slate-200">{producto.etiquetas}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Etiquetas</div>
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-200">{producto.etiquetas}</div>
                     </div>
                   )}
                 </div>
               </div>
             ) : productoPreview ? (
               /* Preview del producto seleccionado con hover/flechas */
-              <div className="bg-[#0d1523] border border-[#1e2a3b] rounded-lg overflow-hidden">
+              <div className="bg-white dark:bg-background border border-slate-200/90 dark:border-secondary rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04),0_10px_28px_rgba(15,23,42,0.07)] dark:shadow-none">
                 {/* Header con nombre y botón editar */}
-                <div className="flex items-center justify-between px-5 py-3 border-b border-[#1e2a3b]">
+                <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-secondary">
                   <div>
-                    <div className="text-xl font-bold text-slate-200">{productoPreview.nombre}</div>
+                    <div className="text-xl font-bold text-slate-900 dark:text-slate-200">{productoPreview.nombre}</div>
                     <div className="text-sm text-slate-500">{productoPreview.descripcion || ''}</div>
                   </div>
                   <Button
                     onClick={() => router.push(`/dashboard/inventario/editar-producto?id=${productoPreview.idprod}`)}
-                    className="bg-[#0e88c9] hover:bg-[#0e88c9]/80 text-white"
+                    className="bg-primary hover:bg-primary/80 text-white"
                   >
                     <Edit className="h-4 w-4 mr-2" />
                     Editar Producto
@@ -1015,8 +1015,8 @@ function PerfilProductoPageContent() {
                 {/* Contenido principal: Imagen + Info */}
                 <div className="grid grid-cols-12">
                   {/* Imagen grande a la izquierda */}
-                  <div className="col-span-5 p-4 border-r border-[#1e2a3b]">
-                    <div className="relative aspect-square bg-slate-900/50 rounded-lg overflow-hidden">
+                  <div className="col-span-5 p-4 border-r border-slate-200 dark:border-secondary">
+                    <div className="relative aspect-square bg-slate-100 dark:bg-slate-900/50 rounded-lg overflow-hidden">
                       {productoPreview.imagen_principal ? (
                         <Image
                           src={productoPreview.imagen_principal}
@@ -1026,7 +1026,7 @@ function PerfilProductoPageContent() {
                         />
                       ) : (
                         <div className="flex items-center justify-center h-full">
-                          <Package className="h-24 w-24 text-slate-600" />
+                          <Package className="h-24 w-24 text-slate-300 dark:text-slate-600" />
                         </div>
                       )}
                     </div>
@@ -1035,74 +1035,74 @@ function PerfilProductoPageContent() {
                   {/* Info apilada a la derecha */}
                   <div className="col-span-7">
                     {/* ID Producto y Stock */}
-                    <div className="grid grid-cols-2 border-b border-[#1e2a3b]">
-                      <div className="p-4 border-r border-[#1e2a3b]">
-                        <div className="text-xs text-slate-500 uppercase">ID Producto</div>
-                        <div className="text-2xl font-bold text-slate-200">{productoPreview.idprod}</div>
+                    <div className="grid grid-cols-2 border-b border-slate-200 dark:border-secondary">
+                      <div className="p-4 border-r border-slate-200 dark:border-secondary">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">ID Producto</div>
+                        <div className="text-2xl font-bold text-slate-900 dark:text-slate-200">{productoPreview.idprod}</div>
                       </div>
                       <div className="p-4">
-                        <div className="text-xs text-slate-500 uppercase">Stock</div>
-                        <div className={`text-2xl font-bold ${productoPreview.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Stock</div>
+                        <div className={`text-2xl font-bold ${productoPreview.stock_contable > 0 ? 'text-emerald-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                           {productoPreview.stock_contable}
                         </div>
                       </div>
                     </div>
 
                     {/* Referencia OE */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Referencia OE</div>
-                      <div className="text-lg font-semibold text-slate-200">{productoPreview.OE || '-'}</div>
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Referencia OE</div>
+                      <div className="text-lg font-semibold text-slate-900 dark:text-slate-200">{productoPreview.OE || '-'}</div>
                     </div>
 
                     {/* Marca */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Marca</div>
-                      <div className="text-lg font-semibold text-slate-200">{productoPreview.marca || '-'}</div>
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Marca</div>
+                      <div className="text-lg font-semibold text-slate-900 dark:text-slate-200">{productoPreview.marca || '-'}</div>
                     </div>
 
                     {/* Categoría */}
-                    <div className="p-4 border-b border-[#1e2a3b]">
-                      <div className="text-xs text-slate-500 uppercase">Categoría</div>
-                      <Badge className="mt-1 bg-[#0e88c9]/20 text-[#0e88c9] border-[#0e88c9]/40">
+                    <div className="p-4 border-b border-slate-200 dark:border-secondary">
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Categoría</div>
+                      <Badge className="mt-1 bg-primary/20 text-primary border-primary/40">
                         {productoPreview.categoria_nombre || productoPreview.idcategoria || '-'}
                       </Badge>
                     </div>
 
                     {/* Costo */}
                     <div className="p-4">
-                      <div className="text-xs text-slate-500 uppercase">Costo</div>
-                      <div className="text-2xl font-bold text-emerald-400">${productoPreview.costo || '0.00'}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 uppercase">Costo</div>
+                      <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">${productoPreview.costo || '0.00'}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Códigos */}
-                <div className="grid grid-cols-3 border-t border-[#1e2a3b]">
-                  <div className="p-3 border-r border-[#1e2a3b]">
-                    <div className="text-xs text-slate-500">Cód. Proveedor</div>
-                    <div className="text-sm font-medium text-slate-300">{productoPreview.idprodprov || '-'}</div>
+                <div className="grid grid-cols-3 border-t border-slate-200 dark:border-secondary">
+                  <div className="p-3 border-r border-slate-200 dark:border-secondary">
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Cód. Proveedor</div>
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300">{productoPreview.idprodprov || '-'}</div>
                   </div>
-                  <div className="p-3 border-r border-[#1e2a3b]">
-                    <div className="text-xs text-slate-500">Cód. Paquete</div>
-                    <div className="text-sm font-medium text-slate-300">{productoPreview.idprodpaquete || '-'}</div>
+                  <div className="p-3 border-r border-slate-200 dark:border-secondary">
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Cód. Paquete</div>
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300">{productoPreview.idprodpaquete || '-'}</div>
                   </div>
                   <div className="p-3">
-                    <div className="text-xs text-slate-500">Código Barras</div>
-                    <div className="text-sm font-medium text-slate-300">{productoPreview.codigo_barras || '-'}</div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Código Barras</div>
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300">{productoPreview.codigo_barras || '-'}</div>
                   </div>
                 </div>
 
                 {/* Mensaje de ayuda */}
-                <div className="px-4 py-2 bg-[#141e2e] border-t border-[#1e2a3b]">
-                  <p className="text-xs text-slate-500 text-center">
-                    Presiona <kbd className="px-1.5 py-0.5 bg-slate-800 rounded text-slate-400">Enter</kbd> o haz doble click para ver el perfil completo
+                <div className="px-4 py-2 bg-slate-50 dark:bg-card border-t border-slate-200/90 dark:border-secondary">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 text-center">
+                    Presiona <kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-400 font-mono text-[10px]">Enter</kbd> o haz doble click para ver el perfil completo
                   </p>
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-[500px] bg-[#0d1523] border border-[#1e2a3b] rounded-lg">
-                <Package className="h-20 w-20 text-slate-600 mb-4" />
-                <h2 className="text-lg font-semibold text-slate-300 mb-2">Selecciona un producto de la lista</h2>
+              <div className="flex flex-col items-center justify-center h-[500px] bg-white dark:bg-background border border-slate-200/90 dark:border-secondary rounded-xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_10px_28px_rgba(15,23,42,0.07)] dark:shadow-none">
+                <Package className="h-20 w-20 text-slate-300 dark:text-slate-600 mb-4" />
+                <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">Selecciona un producto de la lista</h2>
                 <p className="text-sm text-slate-500 text-center px-4">Usa las flechas ↑↓ o pasa el mouse</p>
               </div>
             )}
@@ -1118,9 +1118,9 @@ export default function PerfilProductoPage() {
   return (
     <Suspense fallback={
       <DashboardLayout>
-        <div className="flex flex-col items-center justify-center h-screen bg-[#0a0f1a]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0e88c9] mb-4"></div>
-          <div className="text-lg text-slate-200">Cargando...</div>
+        <div className="flex flex-col items-center justify-center h-screen bg-slate-50 dark:bg-surface-deep">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary mb-4"></div>
+          <div className="text-lg text-slate-800 dark:text-slate-200">Cargando...</div>
         </div>
       </DashboardLayout>
     }>

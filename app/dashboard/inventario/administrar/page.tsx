@@ -492,14 +492,14 @@ export default function AdministrarProductoPage() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         <div className="space-y-6">
           {/* Navbar superior */}
-          <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+          <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)]">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-              <span className="h-6 w-px bg-slate-700" />
-              <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Administrar Productos</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+              <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+              <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">Administrar Productos</span>
             </div>
             <div className="flex items-center gap-3">
               <NotificationDropdown />
@@ -510,8 +510,8 @@ export default function AdministrarProductoPage() {
           {/* Título y botones */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-50 tracking-tight">Administrar Inventario</h1>
-              <p className="text-sm text-slate-400">Gestiona productos y categorías del sistema</p>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-50 tracking-tight">Administrar Inventario</h1>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Gestiona productos y categorías del sistema</p>
             </div>
             <div className="flex gap-2">
               <Button 
@@ -529,14 +529,14 @@ export default function AdministrarProductoPage() {
               </Button>
               <Button 
                 variant="outline"
-                className="border-[#0e88c9]/60 text-[#0e88c9] hover:bg-[#0e88c9]/10"
+                className="border-primary/60 text-primary hover:bg-primary/10"
                 onClick={() => setShowModalCategoria(true)}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Nueva Categoría
               </Button>
               <Link href="/dashboard/inventario/nuevo">
-                <Button className="border-[#0e88c9]/60 bg-[#0e88c9]/10 text-[#0e88c9] hover:bg-[#0e88c9]/20 rounded-full px-5">
+                <Button className="border-primary/60 bg-primary/10 text-primary hover:bg-primary/20 rounded-full px-5">
                   <Package className="h-4 w-4 mr-2" />
                   Nuevo Producto
                 </Button>
@@ -568,12 +568,12 @@ export default function AdministrarProductoPage() {
           </div>
 
           {/* Pestañas */}
-          <div className="flex items-center gap-4 border-b border-slate-700/40 pb-2">
+          <div className="flex items-center gap-4 border-b border-slate-300 dark:border-slate-700/40 pb-2">
             <button
               onClick={() => setActiveTab('productos')}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all ${
                 activeTab === 'productos'
-                  ? 'text-[#0e88c9] border-b-2 border-[#0e88c9]'
+                  ? 'text-primary border-b-2 border-primary'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -584,7 +584,7 @@ export default function AdministrarProductoPage() {
               onClick={() => setActiveTab('categorias')}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all ${
                 activeTab === 'categorias'
-                  ? 'text-[#0e88c9] border-b-2 border-[#0e88c9]'
+                  ? 'text-primary border-b-2 border-primary'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -598,44 +598,44 @@ export default function AdministrarProductoPage() {
           <>
           {/* Estadísticas */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Total Productos</p>
-                    <p className="text-2xl font-bold text-slate-50">{statsGlobal.totalProductos}</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Total Productos</p>
+                    <p className="text-2xl font-bold text-slate-800 dark:text-slate-50">{statsGlobal.totalProductos}</p>
                   </div>
                   <Package className="h-8 w-8 text-cyan-400" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">En Stock</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">En Stock</p>
                     <p className="text-2xl font-bold text-green-500">{statsGlobal.enStock}</p>
                   </div>
                   <Package className="h-8 w-8 text-green-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Sin Stock</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Sin Stock</p>
                     <p className="text-2xl font-bold text-red-500">{statsGlobal.sinStock}</p>
                   </div>
                   <Package className="h-8 w-8 text-red-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Categorías</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Categorías</p>
                     <p className="text-2xl font-bold text-purple-400">{categorias.length}</p>
                   </div>
                   <Filter className="h-8 w-8 text-purple-500" />
@@ -645,7 +645,7 @@ export default function AdministrarProductoPage() {
           </div>
 
           {/* Filtros y Búsqueda - Sticky */}
-          <div className="sticky top-0 z-20 -mx-6 px-6 py-3 bg-[#0a0f1a]/95 backdrop-blur-sm border-b border-slate-800/50">
+          <div className="sticky top-0 z-20 -mx-6 px-6 py-3 bg-white/95 dark:bg-surface-deep/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800/50">
             <div className="flex flex-col lg:flex-row gap-3 items-start lg:items-center">
               <div className="flex-1 w-full">
                 <SearchFilters
@@ -659,7 +659,7 @@ export default function AdministrarProductoPage() {
                 <select
                   value={filterCategoria}
                   onChange={(e) => setFilterCategoria(e.target.value)}
-                  className="h-10 px-3 rounded-md border border-slate-700/40 bg-slate-950/80 text-sm text-slate-100"
+                  className="h-10 px-3 rounded-md border border-slate-300 dark:border-slate-300 dark:border-slate-700/40 bg-white dark:bg-slate-950/80 text-sm text-slate-800 dark:text-slate-100"
                 >
                   <option value="">Todas las categorías</option>
                   {categoriasNuevas.map(categoria => (
@@ -671,7 +671,7 @@ export default function AdministrarProductoPage() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-[#0e88c9]/60 text-[#0e88c9] hover:bg-[#0e88c9]/10"
+                  className="border-primary/60 text-primary hover:bg-primary/10"
                   onClick={() => { setSearchTerm(''); setFilterCategoria(''); setSelectedFilters([]); }}
                 >
                   <Filter className="h-4 w-4 mr-1" />
@@ -680,28 +680,28 @@ export default function AdministrarProductoPage() {
               </div>
             </div>
             {(searchTerm || filterCategoria) && (
-              <div className="mt-2 text-sm text-slate-400">
+              <div className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                 Mostrando {totalProductos} resultado{totalProductos !== 1 ? 's' : ''}
-                {searchTerm && <span className="text-[#0e88c9]"> para "{searchTerm}"</span>}
+                {searchTerm && <span className="text-primary"> para "{searchTerm}"</span>}
               </div>
             )}
           </div>
 
           {/* Lista de Productos */}
-          <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
-                <CardTitle className="text-slate-200">Lista de Productos</CardTitle>
+                <CardTitle className="text-slate-700 dark:text-slate-200">Lista de Productos</CardTitle>
                 <CardDescription className="text-slate-400">
                   {productosFiltrados.length} de {totalProductos} productos (Página {currentPage} de {totalPages})
                 </CardDescription>
               </div>
               {/* Toggle Vista Cards / Tabla */}
-              <div className="flex items-center gap-1 bg-slate-900/50 rounded-full p-1">
+              <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900/50 rounded-full p-1">
                 <button
                   onClick={() => setVistaTabla(false)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${
-                    !vistaTabla ? 'bg-[#0e88c9] text-white' : 'text-slate-400 hover:text-slate-200'
+                    !vistaTabla ? 'bg-primary text-white' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   <LayoutGrid className="h-4 w-4" />
@@ -710,7 +710,7 @@ export default function AdministrarProductoPage() {
                 <button
                   onClick={() => setVistaTabla(true)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${
-                    vistaTabla ? 'bg-[#0e88c9] text-white' : 'text-slate-400 hover:text-slate-200'
+                    vistaTabla ? 'bg-primary text-white' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   <List className="h-4 w-4" />
@@ -721,9 +721,9 @@ export default function AdministrarProductoPage() {
             <CardContent>
               {productosFiltrados.length === 0 ? (
                 <div className="text-center py-8">
-                  <Package className="mx-auto h-12 w-12 text-slate-500" />
+                  <Package className="mx-auto h-12 w-12 text-slate-800 dark:text-slate-500" />
                   <h3 className="mt-2 text-sm font-medium text-slate-100">No hay productos</h3>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     {productos.length === 0 ? 'Comienza agregando tu primer producto.' : 'No se encontraron productos con los filtros aplicados.'}
                   </p>
                 </div>
@@ -747,7 +747,7 @@ export default function AdministrarProductoPage() {
                         <tr key={producto.idprod} className="border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
                           <td className="py-2 px-2 text-slate-300">{producto.idprod}</td>
                           <td className="py-2 px-2">
-                            <div className="w-10 h-10 relative bg-slate-900 rounded overflow-hidden">
+                            <div className="w-10 h-10 relative bg-slate-100 dark:bg-slate-900 rounded overflow-hidden">
                               {producto.imagen_principal ? (
                                 <Image src={producto.imagen_principal} alt={producto.nombre} fill className="object-cover" sizes="40px" />
                               ) : (
@@ -782,8 +782,8 @@ export default function AdministrarProductoPage() {
                 /* Vista Cards */
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {productosFiltrados.map((producto) => (
-                    <Card key={producto.idprod} className="overflow-hidden bg-[#0d1523] border border-[#0e88c9]/20 shadow-md rounded-xl transition-all hover:shadow-xl">
-                      <div className="aspect-square relative bg-slate-900">
+                    <Card key={producto.idprod} className="overflow-hidden bg-white dark:bg-background border border-sky-200 dark:border-primary/20 shadow-md rounded-xl transition-all hover:shadow-xl">
+                      <div className="aspect-square relative bg-slate-100 dark:bg-slate-900">
                         {producto.imagen_principal ? (
                           <Image src={producto.imagen_principal} alt={producto.nombre} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
                         ) : (
@@ -815,7 +815,7 @@ export default function AdministrarProductoPage() {
               {/* Controles de Paginación */}
               {totalPages > 1 && (
                 <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-700">
-                  <div className="text-sm text-slate-400">
+                  <div className="text-sm text-slate-500 dark:text-slate-400">
                     Mostrando {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, totalProductos)} de {totalProductos}
                   </div>
                   <div className="flex items-center gap-2">
@@ -824,7 +824,7 @@ export default function AdministrarProductoPage() {
                       size="sm"
                       onClick={() => setCurrentPage(1)}
                       disabled={currentPage === 1}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       Primera
                     </Button>
@@ -833,7 +833,7 @@ export default function AdministrarProductoPage() {
                       size="sm"
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                       disabled={currentPage === 1}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </Button>
@@ -856,8 +856,8 @@ export default function AdministrarProductoPage() {
                             size="sm"
                             onClick={() => setCurrentPage(pageNum)}
                             className={currentPage === pageNum 
-                              ? "bg-[#0e88c9] text-white" 
-                              : "border-slate-600 text-slate-300 hover:bg-slate-700"
+                              ? "bg-primary text-white" 
+                              : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                             }
                           >
                             {pageNum}
@@ -870,7 +870,7 @@ export default function AdministrarProductoPage() {
                       size="sm"
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                       disabled={currentPage === totalPages}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       <ChevronRight className="h-4 w-4" />
                     </Button>
@@ -879,7 +879,7 @@ export default function AdministrarProductoPage() {
                       size="sm"
                       onClick={() => setCurrentPage(totalPages)}
                       disabled={currentPage === totalPages}
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 disabled:opacity-50"
+                      className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50"
                     >
                       Última
                     </Button>
@@ -896,33 +896,33 @@ export default function AdministrarProductoPage() {
           <>
           {/* Estadísticas de Categorías - Usando el nuevo sistema jerárquico */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Total Categorías</p>
-                    <p className="text-2xl font-bold text-slate-50">{categoriasNuevas.length}</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Total Categorías</p>
+                    <p className="text-2xl font-bold text-slate-800 dark:text-slate-50">{categoriasNuevas.length}</p>
                   </div>
                   <Filter className="h-8 w-8 text-cyan-400" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Total Grupos</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Total Grupos</p>
                     <p className="text-2xl font-bold text-green-500">{gruposDB.length}</p>
                   </div>
                   <Package className="h-8 w-8 text-green-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-400">Total Subgrupos</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Total Subgrupos</p>
                     <p className="text-2xl font-bold text-purple-500">{subgruposDB.length}</p>
                   </div>
                   <Filter className="h-8 w-8 text-purple-500" />
@@ -932,12 +932,12 @@ export default function AdministrarProductoPage() {
           </div>
 
           {/* Sub-pestañas: Categorías, Grupos, Subgrupos */}
-          <div className="flex items-center gap-2 bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl p-2">
+          <div className="flex items-center gap-2 bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl p-2">
             <button
               onClick={() => setCategoriaSubTab('categorias')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 categoriaSubTab === 'categorias'
-                  ? 'bg-[#0e88c9] text-white'
+                  ? 'bg-primary text-white'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
               }`}
             >
@@ -947,7 +947,7 @@ export default function AdministrarProductoPage() {
               onClick={() => setCategoriaSubTab('grupos')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 categoriaSubTab === 'grupos'
-                  ? 'bg-[#0e88c9] text-white'
+                  ? 'bg-primary text-white'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
               }`}
             >
@@ -957,7 +957,7 @@ export default function AdministrarProductoPage() {
               onClick={() => setCategoriaSubTab('subgrupos')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 categoriaSubTab === 'subgrupos'
-                  ? 'bg-[#0e88c9] text-white'
+                  ? 'bg-primary text-white'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
               }`}
             >
@@ -990,7 +990,7 @@ export default function AdministrarProductoPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-[#0e88c9]/60 text-[#0e88c9] hover:bg-[#0e88c9]/10"
+                className="border-primary/60 text-primary hover:bg-primary/10"
                 onClick={() => setShowModalCategoria(true)}
               >
                 <Plus className="h-4 w-4 mr-1" />
@@ -1001,9 +1001,9 @@ export default function AdministrarProductoPage() {
 
           {/* Lista de Categorías - Usando el nuevo sistema numérico */}
           {categoriaSubTab === 'categorias' && (
-          <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
             <CardHeader>
-              <CardTitle className="text-slate-200">Lista de Categorías</CardTitle>
+              <CardTitle className="text-slate-700 dark:text-slate-200">Lista de Categorías</CardTitle>
               <CardDescription className="text-slate-400">Sistema jerárquico: Categoría → Grupo → Subgrupo</CardDescription>
             </CardHeader>
             <CardContent>
@@ -1011,21 +1011,21 @@ export default function AdministrarProductoPage() {
                 {categoriasNuevas.map(categoria => {
                   const gruposEnCategoria = gruposDB.filter(g => g.idcategoria === categoria.idcategoria).length;
                   return (
-                    <Card key={categoria.idcategoria} className="bg-[#0d1523] border border-slate-700/40 rounded-xl hover:border-[#0e88c9]/50 transition-all">
+                    <Card key={categoria.idcategoria} className="bg-slate-50 dark:bg-background border border-slate-200 dark:border-slate-300 dark:border-slate-700/40 rounded-xl hover:border-primary/50 transition-all">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between mb-3">
-                          <span className="text-lg font-bold text-[#0e88c9] bg-[#0e88c9]/10 px-3 py-1 rounded">{categoria.idcategoria}</span>
+                          <span className="text-lg font-bold text-primary bg-primary/10 px-3 py-1 rounded">{categoria.idcategoria}</span>
                           <Button 
                             variant="ghost" 
                             size="icon" 
-                            className="h-6 w-6 text-slate-500 hover:text-red-400"
+                            className="h-6 w-6 text-slate-800 dark:text-slate-500 hover:text-red-400"
                             onClick={() => handleEliminarCategoria(categoria.idcategoria)}
                           >
                             <Trash2 className="h-3 w-3" />
                           </Button>
                         </div>
                         <h3 className="font-semibold text-slate-100 mb-2">{categoria.nombre}</h3>
-                        <p className="text-xs text-slate-500 mb-3">{gruposEnCategoria} grupos</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{gruposEnCategoria} grupos</p>
                         <Badge 
                           variant="outline" 
                           className={gruposEnCategoria > 0 
@@ -1046,19 +1046,19 @@ export default function AdministrarProductoPage() {
 
           {/* Lista de Grupos - Usando el nuevo sistema */}
           {categoriaSubTab === 'grupos' && (
-          <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
             <CardHeader>
-              <CardTitle className="text-slate-200">Lista de Grupos</CardTitle>
+              <CardTitle className="text-slate-700 dark:text-slate-200">Lista de Grupos</CardTitle>
               <CardDescription className="text-slate-400">Grupos organizados por categoría</CardDescription>
             </CardHeader>
             <CardContent>
               {/* Filtro por categoría */}
               <div className="mb-4 flex items-center gap-2">
-                <span className="text-sm text-slate-400">Filtrar por categoría:</span>
+                <span className="text-sm text-slate-500 dark:text-slate-400">Filtrar por categoría:</span>
                 <select
                   value={selectedCategoriaFilter || ''}
                   onChange={(e) => setSelectedCategoriaFilter(e.target.value ? Number(e.target.value) : null)}
-                  className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-200"
+                  className="bg-slate-100 dark:bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-200"
                 >
                   <option value="">Todas las categorías</option>
                   {categoriasNuevas.map(c => (
@@ -1068,9 +1068,9 @@ export default function AdministrarProductoPage() {
               </div>
               {gruposFiltradosPorCategoria.length === 0 ? (
                 <div className="text-center py-8">
-                  <Filter className="mx-auto h-12 w-12 text-slate-500" />
+                  <Filter className="mx-auto h-12 w-12 text-slate-800 dark:text-slate-500" />
                   <h3 className="mt-2 text-sm font-medium text-slate-100">No hay grupos</h3>
-                  <p className="mt-1 text-sm text-slate-400">Crea grupos usando el botón "Nuevo Grupo"</p>
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Crea grupos usando el botón "Nuevo Grupo"</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1078,24 +1078,24 @@ export default function AdministrarProductoPage() {
                     const subgruposEnGrupo = subgruposDB.filter(s => s.id_grupo === grupo.id_grupo).length;
                     const categoriaNombre = categoriasNuevas.find(c => c.idcategoria === grupo.idcategoria)?.nombre || '';
                     return (
-                      <Card key={grupo.id_grupo} className="bg-[#0d1523] border border-slate-700/40 rounded-xl hover:border-green-500/50 transition-all">
+                      <Card key={grupo.id_grupo} className="bg-slate-50 dark:bg-background border border-slate-200 dark:border-slate-300 dark:border-slate-700/40 rounded-xl hover:border-green-500/50 transition-all">
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-mono text-green-400 bg-green-500/10 px-2 py-1 rounded">{grupo.codigo}</span>
-                              <span className="text-xs text-slate-500">Cat: {grupo.idcategoria}</span>
+                              <span className="text-xs text-slate-500 dark:text-slate-400">Cat: {grupo.idcategoria}</span>
                             </div>
                             <Button 
                               variant="ghost" 
                               size="icon" 
-                              className="h-6 w-6 text-slate-500 hover:text-red-400"
+                              className="h-6 w-6 text-slate-800 dark:text-slate-500 hover:text-red-400"
                               onClick={() => handleEliminarGrupo(grupo.id_grupo)}
                             >
                               <Trash2 className="h-3 w-3" />
                             </Button>
                           </div>
                           <h3 className="font-semibold text-slate-100 mb-1">{grupo.nombre}</h3>
-                          <p className="text-xs text-slate-500 mb-3">{categoriaNombre}</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{categoriaNombre}</p>
                           <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">
                             {subgruposEnGrupo} subgrupos
                           </Badge>
@@ -1111,17 +1111,17 @@ export default function AdministrarProductoPage() {
 
           {/* Lista de Subgrupos - Usando el nuevo sistema */}
           {categoriaSubTab === 'subgrupos' && (
-          <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
             <CardHeader>
-              <CardTitle className="text-slate-200">Lista de Subgrupos</CardTitle>
+              <CardTitle className="text-slate-700 dark:text-slate-200">Lista de Subgrupos</CardTitle>
               <CardDescription className="text-slate-400">Subgrupos organizados por grupo</CardDescription>
             </CardHeader>
             <CardContent>
               {subgruposDB.length === 0 ? (
                 <div className="text-center py-8">
-                  <Filter className="mx-auto h-12 w-12 text-slate-500" />
+                  <Filter className="mx-auto h-12 w-12 text-slate-800 dark:text-slate-500" />
                   <h3 className="mt-2 text-sm font-medium text-slate-100">No hay subgrupos</h3>
-                  <p className="mt-1 text-sm text-slate-400">Crea subgrupos usando el botón "Nuevo Subgrupo"</p>
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Crea subgrupos usando el botón "Nuevo Subgrupo"</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1129,24 +1129,24 @@ export default function AdministrarProductoPage() {
                     const grupo = gruposDB.find(g => g.id_grupo === subgrupo.id_grupo);
                     const categoria = grupo ? categoriasNuevas.find(c => c.idcategoria === grupo.idcategoria) : null;
                     return (
-                      <Card key={subgrupo.id_subgrupo} className="bg-[#0d1523] border border-slate-700/40 rounded-xl hover:border-purple-500/50 transition-all">
+                      <Card key={subgrupo.id_subgrupo} className="bg-slate-50 dark:bg-background border border-slate-200 dark:border-slate-300 dark:border-slate-700/40 rounded-xl hover:border-purple-500/50 transition-all">
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-mono text-purple-400 bg-purple-500/10 px-2 py-1 rounded">{subgrupo.codigo}</span>
-                              <span className="text-xs text-slate-500">Grupo: {grupo?.codigo || '-'}</span>
+                              <span className="text-xs text-slate-500 dark:text-slate-400">Grupo: {grupo?.codigo || '-'}</span>
                             </div>
                             <Button 
                               variant="ghost" 
                               size="icon" 
-                              className="h-6 w-6 text-slate-500 hover:text-red-400"
+                              className="h-6 w-6 text-slate-800 dark:text-slate-500 hover:text-red-400"
                               onClick={() => handleEliminarSubgrupo(subgrupo.id_subgrupo)}
                             >
                               <Trash2 className="h-3 w-3" />
                             </Button>
                           </div>
                           <h3 className="font-semibold text-slate-100 mb-1">{subgrupo.nombre}</h3>
-                          <p className="text-xs text-slate-500 mb-3">{grupo?.nombre || '-'} → {categoria?.nombre || '-'}</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{grupo?.nombre || '-'} → {categoria?.nombre || '-'}</p>
                           <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30">
                             Subgrupo
                           </Badge>
@@ -1167,7 +1167,7 @@ export default function AdministrarProductoPage() {
             <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
               <div className="bg-slate-950/95 border border-cyan-700/40 rounded-xl max-w-md w-full shadow-xl">
                 <div className="flex items-center justify-between p-6 border-b border-slate-800/30">
-                  <h3 className="text-lg font-semibold text-slate-100">Nueva Categoría</h3>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Nueva Categoría</h3>
                   <Button variant="ghost" size="icon" onClick={() => {
                     setShowModalCategoria(false);
                     setCategoriaForm({ idcategoria: '', nombre: '', descripcion: '' });
@@ -1183,9 +1183,9 @@ export default function AdministrarProductoPage() {
                       id="idcategoria"
                       value={categoriaForm.idcategoria || getSiguienteCodigoCategoria()}
                       readOnly
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                     />
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
                       {getSiguienteCodigoCategoria() 
                         ? `Siguiente código disponible: ${getSiguienteCodigoCategoria()}` 
                         : '⚠️ No hay códigos disponibles (10-99 agotados)'}
@@ -1210,15 +1210,15 @@ export default function AdministrarProductoPage() {
                       placeholder="Descripción opcional..."
                       value={categoriaForm.descripcion}
                       onChange={(e) => setCategoriaForm(prev => ({ ...prev, descripcion: e.target.value }))}
-                      className="w-full h-20 px-3 py-2 border border-slate-700/40 rounded-md bg-slate-950/80 text-slate-100 text-sm resize-none"
+                      className="w-full h-20 px-3 py-2 border border-slate-300 dark:border-slate-700/40 rounded-md bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 text-sm resize-none"
                     />
                   </div>
 
                   <div className="flex justify-end gap-3 pt-4">
-                    <Button type="button" variant="outline" className="border-[#0e88c9]/60 text-[#0e88c9]" onClick={() => setShowModalCategoria(false)}>
+                    <Button type="button" variant="outline" className="border-primary/60 text-primary" onClick={() => setShowModalCategoria(false)}>
                       Cancelar
                     </Button>
-                    <Button type="submit" disabled={loadingCategoria} className="bg-[#0e88c9]/10 text-[#0e88c9] border-[#0e88c9]/60 rounded-full">
+                    <Button type="submit" disabled={loadingCategoria} className="bg-primary/10 text-primary border-primary/60 rounded-full">
                       {loadingCategoria ? 'Creando...' : 'Crear Categoría'}
                     </Button>
                   </div>
@@ -1232,7 +1232,7 @@ export default function AdministrarProductoPage() {
             <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
               <div className="bg-slate-950/95 border border-green-700/40 rounded-xl max-w-md w-full shadow-xl">
                 <div className="flex items-center justify-between p-6 border-b border-slate-800/30">
-                  <h3 className="text-lg font-semibold text-slate-100">Nuevo Grupo</h3>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Nuevo Grupo</h3>
                   <Button variant="ghost" size="icon" onClick={() => setShowModalGrupo(false)}>
                     <X className="h-4 w-4" />
                   </Button>
@@ -1249,7 +1249,7 @@ export default function AdministrarProductoPage() {
                         setGrupoForm(prev => ({ ...prev, idcategoria: idcat, codigo: siguienteCodigo }));
                       }}
                       required
-                      className="w-full bg-slate-950/80 border border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
+                      className="w-full bg-slate-950/80 border border-slate-300 dark:border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
                     >
                       <option value="">Seleccione una categoría</option>
                       {categoriasNuevas.map(c => (
@@ -1265,10 +1265,10 @@ export default function AdministrarProductoPage() {
                       value={grupoForm.codigo}
                       onChange={(e) => setGrupoForm(prev => ({ ...prev, codigo: e.target.value.replace(/\D/g, '').slice(0, 3) }))}
                       maxLength={3}
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                       readOnly
                     />
-                    <p className="text-xs text-slate-500">El código se genera automáticamente al seleccionar la categoría</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">El código se genera automáticamente al seleccionar la categoría</p>
                   </div>
 
                   <div className="space-y-2">
@@ -1278,7 +1278,7 @@ export default function AdministrarProductoPage() {
                       value={grupoForm.nombre}
                       onChange={(e) => setGrupoForm(prev => ({ ...prev, nombre: e.target.value }))}
                       required
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                     />
                   </div>
 
@@ -1300,7 +1300,7 @@ export default function AdministrarProductoPage() {
             <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
               <div className="bg-slate-950/95 border border-purple-700/40 rounded-xl max-w-md w-full shadow-xl">
                 <div className="flex items-center justify-between p-6 border-b border-slate-800/30">
-                  <h3 className="text-lg font-semibold text-slate-100">Nuevo Subgrupo</h3>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Nuevo Subgrupo</h3>
                   <Button variant="ghost" size="icon" onClick={() => setShowModalSubgrupo(false)}>
                     <X className="h-4 w-4" />
                   </Button>
@@ -1315,7 +1315,7 @@ export default function AdministrarProductoPage() {
                         setSelectedCategoriaFilter(e.target.value ? Number(e.target.value) : null);
                         setSubgrupoForm(prev => ({ ...prev, id_grupo: 0 }));
                       }}
-                      className="w-full bg-slate-950/80 border border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
+                      className="w-full bg-slate-950/80 border border-slate-300 dark:border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
                     >
                       <option value="">Seleccione una categoría</option>
                       {categoriasNuevas.map(c => (
@@ -1334,7 +1334,7 @@ export default function AdministrarProductoPage() {
                         setSubgrupoForm(prev => ({ ...prev, id_grupo: idGrupo, codigo: siguienteCodigo }));
                       }}
                       required
-                      className="w-full bg-slate-950/80 border border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
+                      className="w-full bg-slate-950/80 border border-slate-300 dark:border-slate-700/40 rounded-md px-3 py-2 text-slate-100"
                     >
                       <option value="">Seleccione un grupo</option>
                       {gruposFiltradosPorCategoria.map(g => (
@@ -1350,10 +1350,10 @@ export default function AdministrarProductoPage() {
                       value={subgrupoForm.codigo}
                       onChange={(e) => setSubgrupoForm(prev => ({ ...prev, codigo: e.target.value.replace(/\D/g, '').slice(0, 3) }))}
                       maxLength={3}
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                       readOnly
                     />
-                    <p className="text-xs text-slate-500">El código se genera automáticamente al seleccionar el grupo</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">El código se genera automáticamente al seleccionar el grupo</p>
                   </div>
 
                   <div className="space-y-2">
@@ -1363,7 +1363,7 @@ export default function AdministrarProductoPage() {
                       value={subgrupoForm.nombre}
                       onChange={(e) => setSubgrupoForm(prev => ({ ...prev, nombre: e.target.value }))}
                       required
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                     />
                   </div>
 

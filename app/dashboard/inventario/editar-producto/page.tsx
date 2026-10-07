@@ -712,8 +712,8 @@ function EditarProductoContent() {
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="flex flex-col items-center justify-center h-screen bg-[#0a0f1a]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0e88c9] mb-4"></div>
+        <div className="flex flex-col items-center justify-center h-screen bg-slate-50 dark:bg-surface-deep">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary mb-4"></div>
           {idParam && <p className="text-slate-400">Cargando producto...</p>}
         </div>
       </DashboardLayout>
@@ -722,19 +722,19 @@ function EditarProductoContent() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         <div className="space-y-4">
         {/* Navbar */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+        <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)]">
           <div className="flex items-center gap-3">
             {isEditing && (
               <Button variant="ghost" size="icon" onClick={handleCancelEdit} className="text-slate-400 hover:text-slate-200">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             )}
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">
               {isEditing ? 'Editar Producto' : 'Seleccionar Producto'}
             </span>
           </div>
@@ -745,11 +745,11 @@ function EditarProductoContent() {
                   type="button" 
                   variant="outline" 
                   onClick={handleCancelEdit} 
-                  className="h-9 px-4 border-slate-600 text-slate-300 hover:bg-slate-700"
+                  className="h-9 px-4 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                 >
                   Cancelar
                 </Button>
-                <Button type="submit" form="product-form" disabled={saving} className="bg-[#0e88c9] hover:bg-[#0e88c9]/90 text-white h-9 px-4">
+                <Button type="submit" form="product-form" disabled={saving} className="bg-primary hover:bg-primary/90 text-white h-9 px-4">
                   <Save className="h-4 w-4 mr-2" />
                   {saving ? 'Guardando...' : 'Guardar Cambios'}
                 </Button>
@@ -763,30 +763,30 @@ function EditarProductoContent() {
         {/* Diálogo de confirmación */}
         {showConfirmDialog && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-[0_0_30px_rgba(14,136,201,0.3)]">
+            <div className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-[0_0_30px_rgba(14,136,201,0.3)]">
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-12 w-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
                   <AlertTriangle className="h-6 w-6 text-yellow-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-100">Confirmar Edición</h3>
-                  <p className="text-sm text-slate-400">Esta acción modificará el producto</p>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Confirmar Edición</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Esta acción modificará el producto</p>
                 </div>
               </div>
               <p className="text-slate-300 mb-6">
-                ¿Está seguro que desea guardar los cambios realizados al producto <span className="font-semibold text-[#0e88c9]">"{producto?.nombre}"</span>?
+                ¿Está seguro que desea guardar los cambios realizados al producto <span className="font-semibold text-primary">"{producto?.nombre}"</span>?
               </p>
               <div className="flex justify-end gap-3">
                 <Button
                   variant="outline"
                   onClick={() => setShowConfirmDialog(false)}
-                  className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                  className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                 >
                   Cancelar
                 </Button>
                 <Button
                   onClick={handleConfirmSave}
-                  className="bg-[#0e88c9] hover:bg-[#0e88c9]/90 text-white"
+                  className="bg-primary hover:bg-primary/90 text-white"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   Sí, Guardar Cambios
@@ -799,7 +799,7 @@ function EditarProductoContent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Columna Izquierda: Lista de productos */}
           <div className="lg:col-span-4 space-y-4">
-            <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl overflow-hidden">
+            <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl overflow-hidden">
               <CardHeader className="py-2 px-3 border-b border-slate-800 space-y-2">
                 <SearchFilters
                   searchTerm={searchQuery}
@@ -830,7 +830,7 @@ function EditarProductoContent() {
                         size="sm"
                         variant="outline"
                         onClick={seleccionarTodos}
-                        className="h-6 text-[10px] px-2 border-slate-600 text-slate-300 hover:bg-slate-700"
+                        className="h-6 text-[10px] px-2 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                       >
                         Todos
                       </Button>
@@ -838,7 +838,7 @@ function EditarProductoContent() {
                         size="sm"
                         variant="outline"
                         onClick={deseleccionarTodos}
-                        className="h-6 text-[10px] px-2 border-slate-600 text-slate-300 hover:bg-slate-700"
+                        className="h-6 text-[10px] px-2 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                       >
                         Ninguno
                       </Button>
@@ -878,7 +878,7 @@ function EditarProductoContent() {
                 }}
               >
                 {productosFiltrados.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center h-full text-slate-500">
+                  <div className="flex flex-col items-center justify-center h-full text-slate-800 dark:text-slate-500">
                     <Package className="h-8 w-8 mb-2" />
                     <p className="text-sm">No hay productos</p>
                   </div>
@@ -898,7 +898,7 @@ function EditarProductoContent() {
                         modoSeleccionMultiple && productosSeleccionados.has(prod.idprod) 
                           ? 'bg-purple-500/20 border-l-2 border-l-purple-500' 
                           : index === selectedIndex && !modoSeleccionMultiple 
-                            ? 'bg-[#0e88c9]/20 border-l-2 border-l-[#0e88c9]' 
+                            ? 'bg-primary/20 border-l-2 border-l-primary' 
                             : 'hover:bg-slate-800/50'
                       } ${isEditing && producto?.idprod === prod.idprod ? 'bg-emerald-500/10 border-l-2 border-l-emerald-500' : ''}`}
                     >
@@ -909,10 +909,10 @@ function EditarProductoContent() {
                           checked={productosSeleccionados.has(prod.idprod)}
                           onChange={() => toggleProductoSeleccionado(prod.idprod)}
                           onClick={(e) => e.stopPropagation()}
-                          className="h-4 w-4 rounded border-purple-500 bg-slate-900 text-purple-600 focus:ring-purple-500 focus:ring-offset-0 flex-shrink-0"
+                          className="h-4 w-4 rounded border-purple-500 bg-slate-100 dark:bg-slate-900 text-purple-600 focus:ring-purple-500 focus:ring-offset-0 flex-shrink-0"
                         />
                       )}
-                      <div className="h-10 w-10 rounded bg-slate-900 flex-shrink-0 overflow-hidden">
+                      <div className="h-10 w-10 rounded bg-slate-100 dark:bg-slate-900 flex-shrink-0 overflow-hidden">
                         {prod.imagen_principal ? (
                           <Image src={prod.imagen_principal} alt="" width={40} height={40} className="object-cover h-full w-full" />
                         ) : (
@@ -923,9 +923,9 @@ function EditarProductoContent() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-slate-200 truncate">{prod.nombre}</p>
-                        <p className="text-xs text-slate-500">OE: {prod.OE || '-'}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">OE: {prod.OE || '-'}</p>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <Badge variant="outline" className="text-[10px] px-1 py-0 h-4 bg-[#0e88c9]/10 text-[#0e88c9] border-[#0e88c9]/30">
+                          <Badge variant="outline" className="text-[10px] px-1 py-0 h-4 bg-primary/10 text-primary border-primary/30">
                             {(prod as any).categoria_nueva_nombre || prod.categoria_nombre || '-'}
                           </Badge>
                           <span className={`text-[10px] font-medium ${prod.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
@@ -942,7 +942,7 @@ function EditarProductoContent() {
               </div>
               
               {/* Info de total de productos */}
-              <div className="flex items-center justify-center p-2 border-t border-slate-700 bg-slate-900/50">
+              <div className="flex items-center justify-center p-2 border-t border-slate-700 bg-slate-100 dark:bg-slate-900/50">
                 <span className="text-xs text-slate-400">
                   {visibleCount < productosFiltrados.length 
                     ? `Mostrando ${visibleCount} de ${productosFiltrados.length} productos (scroll para ver más)`
@@ -954,14 +954,14 @@ function EditarProductoContent() {
 
             {/* Info del producto seleccionado (cuando NO está editando) */}
             {!isEditing && productoPreview && (
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl">
                 <CardContent className="p-3 space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-slate-400">Producto Seleccionado</span>
                     <Button 
                       size="sm" 
                       onClick={() => handleEditProduct(productoPreview.idprod)}
-                      className="h-7 text-xs bg-[#0e88c9]/10 text-[#0e88c9] border border-[#0e88c9]/40"
+                      className="h-7 text-xs bg-primary/10 text-primary border border-primary/40"
                     >
                       <Edit className="h-3 w-3 mr-1" />
                       Editar
@@ -969,25 +969,25 @@ function EditarProductoContent() {
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <span className="text-slate-500">ID:</span>
+                      <span className="text-slate-800 dark:text-slate-500">ID:</span>
                       <span className="text-slate-300 ml-1">{productoPreview.idprod}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500">Marca:</span>
+                      <span className="text-slate-800 dark:text-slate-500">Marca:</span>
                       <span className="text-slate-300 ml-1">{productoPreview.marca || '-'}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500">Stock:</span>
+                      <span className="text-slate-800 dark:text-slate-500">Stock:</span>
                       <span className={`ml-1 ${productoPreview.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
                         {productoPreview.stock_contable}
                       </span>
                     </div>
                     <div>
-                      <span className="text-slate-500">Costo:</span>
+                      <span className="text-slate-800 dark:text-slate-500">Costo:</span>
                       <span className="text-slate-300 ml-1">${productoPreview.costo || '0'}</span>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-500 italic">Doble click para editar</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic">Doble click para editar</p>
                 </CardContent>
               </Card>
             )}
@@ -998,13 +998,13 @@ function EditarProductoContent() {
             {isEditing && producto ? (
               <form id="product-form" onSubmit={handleSubmitClick} className="space-y-4">
                 {/* Galería de Imágenes - Centrada arriba */}
-                <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-[0_0_20px_rgba(14,136,201,0.25)] rounded-xl overflow-hidden max-w-md mx-auto">
+                <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.1)] dark:shadow-[0_0_20px_rgba(14,136,201,0.25)] rounded-xl overflow-hidden max-w-md mx-auto">
                   <CardHeader className="py-2 px-3 flex flex-row items-center justify-between">
-                    <CardTitle className="text-sm text-slate-200 tracking-wide">GALERÍA DE IMÁGENES</CardTitle>
+                    <CardTitle className="text-sm text-slate-700 dark:text-slate-200 tracking-wide">GALERÍA DE IMÁGENES</CardTitle>
                     <span className="text-xs text-emerald-400">{allImages.length + newImages.length}/10</span>
                   </CardHeader>
                   <CardContent className="p-3 space-y-3">
-                    <div className="relative w-full h-[180px] bg-slate-900 rounded-xl overflow-hidden">
+                    <div className="relative w-full h-[180px] bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden">
                     {allImages.length > 0 ? (
                       <>
                         <div className="relative h-full w-full">
@@ -1025,15 +1025,15 @@ function EditarProductoContent() {
                       </>
                     ) : (
                       <div className="flex items-center justify-center h-full w-full p-4">
-                        <div className="rounded-xl border-2 border-dashed border-slate-700/40 bg-slate-950/60 p-4 w-full h-full flex flex-col items-center justify-center">
-                          <Upload className="h-12 w-12 text-slate-500 mb-3" />
+                        <div className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-300 dark:border-slate-700/40 bg-slate-950/60 p-4 w-full h-full flex flex-col items-center justify-center">
+                          <Upload className="h-12 w-12 text-slate-800 dark:text-slate-500 mb-3" />
                           <label htmlFor="image-upload-main" className="cursor-pointer">
-                            <div className="border border-[#0e88c9]/60 bg-[#0e88c9]/10 text-[#0e88c9] hover:bg-[#0e88c9]/20 px-4 py-2 rounded-lg text-sm font-medium">
+                            <div className="border border-primary/60 bg-primary/10 text-primary hover:bg-primary/20 px-4 py-2 rounded-lg text-sm font-medium">
                               Seleccionar Imágenes
                             </div>
                           </label>
                           <input id="image-upload-main" type="file" multiple accept="image/*" onChange={handleNewImagesChange} className="hidden" />
-                          <p className="text-xs text-slate-500 mt-2 text-center">PNG, JPG, JPEG hasta 10MB</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center">PNG, JPG, JPEG hasta 10MB</p>
                         </div>
                       </div>
                     )}
@@ -1049,14 +1049,14 @@ function EditarProductoContent() {
                       </button>
                     ))}
                     {newImages.map((img, idx) => (
-                      <div key={`new-${idx}`} className="h-14 w-20 flex-shrink-0 rounded-md border-2 border-emerald-500 bg-slate-900 overflow-hidden">
+                      <div key={`new-${idx}`} className="h-14 w-20 flex-shrink-0 rounded-md border-2 border-emerald-500 bg-slate-100 dark:bg-slate-900 overflow-hidden">
                         <img src={URL.createObjectURL(img)} alt={`Nueva ${idx + 1}`} className="h-full w-full object-cover" />
                       </div>
                     ))}
                   </div>
                   {allImages.length > 0 && (
-                    <div className="border-t border-slate-700/40 pt-3 text-center">
-                      <label htmlFor="image-upload-add" className="cursor-pointer inline-flex items-center gap-2 border border-[#0e88c9]/60 bg-[#0e88c9]/10 text-[#0e88c9] hover:bg-[#0e88c9]/20 px-3 py-1.5 rounded-lg text-xs font-medium">
+                    <div className="border-t border-slate-300 dark:border-slate-700/40 pt-3 text-center">
+                      <label htmlFor="image-upload-add" className="cursor-pointer inline-flex items-center gap-2 border border-primary/60 bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 rounded-lg text-xs font-medium">
                         <Upload className="h-3 w-3" /> Agregar Nuevas Imágenes
                       </label>
                       <input id="image-upload-add" type="file" multiple accept="image/*" onChange={handleNewImagesChange} className="hidden" />
@@ -1066,9 +1066,9 @@ function EditarProductoContent() {
                 </Card>
 
                 {/* UN SOLO CUADRO: Información del Producto */}
-                <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl">
+                <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-sm text-slate-100 tracking-wide">INFORMACIÓN DEL PRODUCTO</CardTitle>
+                    <CardTitle className="text-sm text-slate-800 dark:text-slate-100 tracking-wide">INFORMACIÓN DEL PRODUCTO</CardTitle>
                     <CardDescription className="text-xs text-slate-400">Datos básicos, clasificación y stock</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -1077,51 +1077,51 @@ function EditarProductoContent() {
                       <div className="space-y-2">
                         <Label htmlFor="nombre">Nombre del Producto *</Label>
                         <Input id="nombre" value={producto.nombre} onChange={(e) => updateProductField('nombre', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" required />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="descripcion">Descripción</Label>
                         <Input id="descripcion" value={producto.descripcion || ''} onChange={(e) => updateProductField('descripcion', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="marca">Marca</Label>
                         <Input id="marca" value={producto.marca || ''} onChange={(e) => updateProductField('marca', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="OE">Referencia OE *</Label>
                         <Input id="OE" value={producto.OE || ''} onChange={(e) => updateProductField('OE', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" required />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" required />
                       </div>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="idprodprov">Código Proveedor</Label>
                         <Input id="idprodprov" value={producto.idprodprov || ''} onChange={(e) => updateProductField('idprodprov', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="idprodpaquete">Código Paquete</Label>
                         <Input id="idprodpaquete" value={producto.idprodpaquete || ''} onChange={(e) => updateProductField('idprodpaquete', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="idprodfisico">ID Producto Físico</Label>
                         <Input id="idprodfisico" value={producto.idprodfisico || ''} onChange={(e) => updateProductField('idprodfisico', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="codigo_barras">Código de Barras</Label>
                       <Input id="codigo_barras" value={producto.codigo_barras || ''} onChange={(e) => updateProductField('codigo_barras', e.target.value)}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                     </div>
 
                     {/* Separador Clasificación y Stock */}
-                    <div className="border-t border-slate-700/40 pt-4">
+                    <div className="border-t border-slate-300 dark:border-slate-700/40 pt-4">
                       <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Clasificación Jerárquica</h4>
                     </div>
 
@@ -1133,10 +1133,10 @@ function EditarProductoContent() {
                           value={selectedCategoria?.toString() || ''} 
                           onValueChange={(v) => handleCategoriaChange(Number(v))}
                         >
-                          <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100">
+                          <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100">
                             <SelectValue placeholder="Seleccione categoría" />
                           </SelectTrigger>
-                          <SelectContent className="bg-slate-900 border-slate-700">
+                          <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                             {categoriasNuevo.map(c => (
                               <SelectItem key={c.idcategoria} value={c.idcategoria.toString()}>
                                 {c.idcategoria} - {c.nombre}
@@ -1152,10 +1152,10 @@ function EditarProductoContent() {
                           onValueChange={(v) => handleGrupoChange(Number(v))}
                           disabled={!selectedCategoria}
                         >
-                          <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100">
+                          <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100">
                             <SelectValue placeholder={selectedCategoria ? "Seleccione grupo" : "Primero seleccione categoría"} />
                           </SelectTrigger>
-                          <SelectContent className="bg-slate-900 border-slate-700">
+                          <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                             {gruposFiltrados.map(g => (
                               <SelectItem key={g.id_grupo} value={g.id_grupo.toString()}>
                                 {g.codigo} - {g.nombre}
@@ -1171,10 +1171,10 @@ function EditarProductoContent() {
                           onValueChange={(v) => handleSubgrupoChange(Number(v))}
                           disabled={!selectedGrupo}
                         >
-                          <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100">
+                          <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100">
                             <SelectValue placeholder={selectedGrupo ? "Seleccione subgrupo" : "Primero seleccione grupo"} />
                           </SelectTrigger>
-                          <SelectContent className="bg-slate-900 border-slate-700">
+                          <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                             {subgruposFiltrados.map(s => (
                               <SelectItem key={s.id_subgrupo} value={s.id_subgrupo.toString()}>
                                 {s.codigo} - {s.nombre}
@@ -1187,14 +1187,14 @@ function EditarProductoContent() {
 
                     {/* Código Jerárquico Generado */}
                     {(producto as any).codigo_jerarquico && (
-                      <div className="mt-2 p-3 bg-[#0e88c9]/10 border border-[#0e88c9]/30 rounded-lg">
+                      <div className="mt-2 p-3 bg-primary/10 border border-primary/30 rounded-lg">
                         <div className="flex items-center justify-between">
                           <span className="text-xs text-slate-400">Código Jerárquico:</span>
-                          <span className="text-lg font-mono font-bold text-[#0e88c9]">
+                          <span className="text-lg font-mono font-bold text-primary">
                             {(producto as any).codigo_jerarquico}
                           </span>
                         </div>
-                        <p className="text-[10px] text-slate-500 mt-1">
+                        <p className="text-[10px] text-slate-800 dark:text-slate-500 mt-1">
                           Formato: [Categoría 2d][Grupo 3d][Subgrupo 3d] = 8 dígitos
                         </p>
                       </div>
@@ -1205,10 +1205,10 @@ function EditarProductoContent() {
                       <div className="space-y-2">
                         <Label>Lado</Label>
                         <Select value={producto.lado} onValueChange={(v) => updateProductField('lado', v)}>
-                          <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100">
+                          <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100">
                             <SelectValue placeholder="Seleccione" />
                           </SelectTrigger>
-                          <SelectContent className="bg-slate-900 border-slate-700">
+                          <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                             {lados.map(l => <SelectItem key={l} value={l}>{l}</SelectItem>)}
                           </SelectContent>
                         </Select>
@@ -1216,10 +1216,10 @@ function EditarProductoContent() {
                       <div className="space-y-2">
                         <Label>Unidad de Medida</Label>
                         <Select value={producto.unimedida} onValueChange={(v) => updateProductField('unimedida', v)}>
-                          <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100">
+                          <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100">
                             <SelectValue placeholder="Seleccione" />
                           </SelectTrigger>
-                          <SelectContent className="bg-slate-900 border-slate-700">
+                          <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                             {unidadesMedida.map(u => <SelectItem key={u} value={u}>{u}</SelectItem>)}
                           </SelectContent>
                         </Select>
@@ -1230,84 +1230,84 @@ function EditarProductoContent() {
                       <div className="space-y-2">
                         <Label>Modelo</Label>
                         <Input value={producto.modelo || ''} onChange={(e) => updateProductField('modelo', e.target.value)}
-                          placeholder="Modelo" className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          placeholder="Modelo" className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Clase</Label>
                         <Input value={producto.clase || ''} onChange={(e) => updateProductField('clase', e.target.value)}
-                          placeholder="Clase" className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          placeholder="Clase" className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Estilo</Label>
                         <Input value={producto.estilo || ''} onChange={(e) => updateProductField('estilo', e.target.value)}
-                          placeholder="Estilo" className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          placeholder="Estilo" className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Giro</Label>
                         <Input value={producto.giro || ''} onChange={(e) => updateProductField('giro', e.target.value)}
-                          placeholder="Giro" className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          placeholder="Giro" className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                     </div>
                     <div className="grid grid-cols-4 gap-4">
                       <div className="space-y-2">
                         <Label>Stock Contable</Label>
                         <Input type="number" value={producto.stock_contable || 0} onChange={(e) => updateProductField('stock_contable', Number(e.target.value))}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Stock Físico</Label>
                         <Input type="number" value={producto.stock_fisico || 0} onChange={(e) => updateProductField('stock_fisico', Number(e.target.value))}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Costo</Label>
                         <Input type="number" step="0.01" value={producto.costo || ''} onChange={(e) => updateProductField('costo', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                       <div className="space-y-2">
                         <Label>Peso (lb)</Label>
                         <Input type="number" step="0.001" value={producto.peso || ''} onChange={(e) => updateProductField('peso', e.target.value)}
-                          className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                          className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <input type="checkbox" id="exento" checked={producto.exento === 1} onChange={(e) => updateProductField('exento', e.target.checked ? 1 : 0)}
-                        className="w-4 h-4 rounded border-slate-700 bg-slate-950/80 text-[#0e88c9]" />
+                        className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950/80 text-primary" />
                       <Label htmlFor="exento" className="cursor-pointer">Exento de Impuestos</Label>
                     </div>
 
                     {/* Separador Info Adicional */}
-                    <div className="border-t border-slate-700/40 pt-4">
+                    <div className="border-t border-slate-300 dark:border-slate-700/40 pt-4">
                       <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Información Adicional</h4>
                     </div>
 
                     <div className="space-y-2">
                       <Label className="text-xs">Etiquetas de Búsqueda</Label>
                       <Input value={producto.etiquetas || ''} onChange={(e) => updateProductField('etiquetas', e.target.value)}
-                        placeholder="frenos, disco, toyota..." className="bg-slate-950/80 border-slate-700/40 text-slate-100" />
+                        placeholder="frenos, disco, toyota..." className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100" />
                     </div>
                     <div className="space-y-2">
                       <Label className="text-xs">Información Reservada (Acerca del Item)</Label>
                       <Textarea value={producto.info_reservada || ''} onChange={(e) => updateProductField('info_reservada', e.target.value)}
                         placeholder="Información RESERVADA para documentar el producto"
-                        rows={2} className="text-sm bg-slate-950/80 border-slate-700/40 text-slate-100 resize-none" />
+                        rows={2} className="text-sm bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 resize-none" />
                     </div>
                     <div className="space-y-2">
                       <Label className="text-xs">Información Pública</Label>
                       <Textarea value={producto.info_publica || ''} onChange={(e) => updateProductField('info_publica', e.target.value)}
                         placeholder="Información para mostrar en tienda en línea"
-                        rows={2} className="text-sm bg-slate-950/80 border-slate-700/40 text-slate-100 resize-none" />
+                        rows={2} className="text-sm bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 resize-none" />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label className="text-xs">Referencias Directas (OE)</Label>
                         <Textarea value={producto.info_referencias_directas || ''} onChange={(e) => updateProductField('info_referencias_directas', e.target.value)}
-                          rows={2} className="text-sm bg-slate-950/80 border-slate-700/40 text-slate-100 resize-none" />
+                          rows={2} className="text-sm bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 resize-none" />
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs">Referencias Indirectas</Label>
                         <Textarea value={producto.info_referencias_indirectas || ''} onChange={(e) => updateProductField('info_referencias_indirectas', e.target.value)}
-                          rows={2} className="text-sm bg-slate-950/80 border-slate-700/40 text-slate-100 resize-none" />
+                          rows={2} className="text-sm bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 resize-none" />
                       </div>
                     </div>
                   </CardContent>
@@ -1315,13 +1315,13 @@ function EditarProductoContent() {
               </form>
             ) : (
               /* Preview del Producto */
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl h-full">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl h-full">
                 {productoPreview ? (
                   <>
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-lg text-slate-200">{productoPreview.nombre}</CardTitle>
-                        <Button onClick={() => handleEditProduct(productoPreview.idprod)} className="bg-[#0e88c9]/10 text-[#0e88c9] border border-[#0e88c9]/40">
+                        <Button onClick={() => handleEditProduct(productoPreview.idprod)} className="bg-primary/10 text-primary border border-primary/40">
                           <Edit className="h-4 w-4 mr-2" />
                           Editar Producto
                         </Button>
@@ -1330,7 +1330,7 @@ function EditarProductoContent() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-slate-900 rounded-lg overflow-hidden aspect-square relative">
+                        <div className="bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden aspect-square relative">
                           {previewImages.length > 0 ? (
                             <Image src={previewImages[0]} alt={productoPreview.nombre} fill className="object-contain" />
                           ) : (
@@ -1341,46 +1341,46 @@ function EditarProductoContent() {
                         </div>
                         <div className="space-y-3">
                           <div className="grid grid-cols-2 gap-3">
-                            <div className="bg-slate-900/50 rounded-lg p-3">
-                              <p className="text-xs text-slate-500">ID Producto</p>
+                            <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                              <p className="text-xs text-slate-500 dark:text-slate-400">ID Producto</p>
                               <p className="text-lg font-bold text-slate-200">{productoPreview.idprod}</p>
                             </div>
-                            <div className="bg-slate-900/50 rounded-lg p-3">
-                              <p className="text-xs text-slate-500">Stock</p>
+                            <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                              <p className="text-xs text-slate-500 dark:text-slate-400">Stock</p>
                               <p className={`text-lg font-bold ${productoPreview.stock_contable > 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 {productoPreview.stock_contable}
                               </p>
                             </div>
                           </div>
-                          <div className="bg-slate-900/50 rounded-lg p-3">
-                            <p className="text-xs text-slate-500">Referencia OE</p>
+                          <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Referencia OE</p>
                             <p className="text-sm font-medium text-slate-200">{productoPreview.OE || '-'}</p>
                           </div>
-                          <div className="bg-slate-900/50 rounded-lg p-3">
-                            <p className="text-xs text-slate-500">Marca</p>
+                          <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Marca</p>
                             <p className="text-sm font-medium text-slate-200">{productoPreview.marca || '-'}</p>
                           </div>
-                          <div className="bg-slate-900/50 rounded-lg p-3">
-                            <p className="text-xs text-slate-500">Categoría</p>
+                          <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Categoría</p>
                             <Badge variant="outline">{productoPreview.categoria_nombre || productoPreview.idcategoria || '-'}</Badge>
                           </div>
-                          <div className="bg-slate-900/50 rounded-lg p-3">
-                            <p className="text-xs text-slate-500">Costo</p>
+                          <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-3">
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Costo</p>
                             <p className="text-lg font-bold text-emerald-400">${productoPreview.costo || '0.00'}</p>
                           </div>
                         </div>
                       </div>
                       <div className="grid grid-cols-3 gap-3 pt-3 border-t border-slate-800">
                         <div>
-                          <p className="text-xs text-slate-500">Cód. Proveedor</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">Cód. Proveedor</p>
                           <p className="text-sm text-slate-300">{productoPreview.idprodprov || '-'}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-500">Cód. Paquete</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">Cód. Paquete</p>
                           <p className="text-sm text-slate-300">{productoPreview.idprodpaquete || '-'}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-500">Código Barras</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">Código Barras</p>
                           <p className="text-sm text-slate-300">{productoPreview.codigo_barras || '-'}</p>
                         </div>
                       </div>
@@ -1390,7 +1390,7 @@ function EditarProductoContent() {
                   <div className="flex flex-col items-center justify-center h-full min-h-[400px]">
                     <Package className="h-16 w-16 text-slate-600 mb-4" />
                     <p className="text-slate-400">Selecciona un producto de la lista</p>
-                    <p className="text-xs text-slate-500 mt-1">Usa las flechas ↑↓ o pasa el mouse</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Usa las flechas ↑↓ o pasa el mouse</p>
                   </div>
                 )}
               </Card>
@@ -1401,10 +1401,10 @@ function EditarProductoContent() {
     {/* Modal de Edición Masiva */}
         {showEdicionMasiva && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-            <div className="bg-[#141e2e] border border-purple-500/30 rounded-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="bg-gradient-to-br from-white to-violet-50/40 dark:from-card dark:to-background border border-violet-300 dark:border-purple-500/30 rounded-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
               <div className="p-4 border-b border-slate-700 flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-100">Edición Masiva</h3>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Edición Masiva</h3>
                   <p className="text-sm text-purple-400">{productosSeleccionados.size} productos seleccionados</p>
                 </div>
                 <Button
@@ -1424,18 +1424,18 @@ function EditarProductoContent() {
                 
                 {/* Marca */}
                 <div className="space-y-1">
-                  <Label className="text-slate-300">Marca</Label>
+                  <Label className="text-slate-600 dark:text-slate-300">Marca</Label>
                   <Input
                     placeholder="Dejar vacío para no modificar"
                     value={edicionMasivaData.marca}
                     onChange={(e) => setEdicionMasivaData(prev => ({ ...prev, marca: e.target.value }))}
-                    className="bg-slate-900 border-slate-700 text-slate-200"
+                    className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200"
                   />
                 </div>
                 
                 {/* Categoría */}
                 <div className="space-y-1">
-                  <Label className="text-slate-300">Categoría</Label>
+                  <Label className="text-slate-600 dark:text-slate-300">Categoría</Label>
                   <Select
                     value={edicionMasivaData.idcategoria_nuevo}
                     onValueChange={(value) => setEdicionMasivaData(prev => ({ 
@@ -1445,10 +1445,10 @@ function EditarProductoContent() {
                       id_subgrupo: ''
                     }))}
                   >
-                    <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                    <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                       <SelectValue placeholder="No modificar" />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-900 border-slate-700">
+                    <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                       {categoriasNuevo.map(cat => (
                         <SelectItem key={cat.idcategoria} value={String(cat.idcategoria)}>
                           {cat.nombre}
@@ -1461,7 +1461,7 @@ function EditarProductoContent() {
                 {/* Grupo (si hay categoría seleccionada) */}
                 {edicionMasivaData.idcategoria_nuevo && (
                   <div className="space-y-1">
-                    <Label className="text-slate-300">Grupo</Label>
+                    <Label className="text-slate-600 dark:text-slate-300">Grupo</Label>
                     <Select
                       value={edicionMasivaData.id_grupo}
                       onValueChange={(value) => setEdicionMasivaData(prev => ({ 
@@ -1470,10 +1470,10 @@ function EditarProductoContent() {
                         id_subgrupo: ''
                       }))}
                     >
-                      <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                      <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                         <SelectValue placeholder="No modificar" />
                       </SelectTrigger>
-                      <SelectContent className="bg-slate-900 border-slate-700">
+                      <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                         {grupos
                           .filter(g => Number(g.idcategoria) === Number(edicionMasivaData.idcategoria_nuevo))
                           .map(grupo => (
@@ -1489,15 +1489,15 @@ function EditarProductoContent() {
                 {/* Subgrupo (si hay grupo seleccionado) */}
                 {edicionMasivaData.id_grupo && (
                   <div className="space-y-1">
-                    <Label className="text-slate-300">Subgrupo</Label>
+                    <Label className="text-slate-600 dark:text-slate-300">Subgrupo</Label>
                     <Select
                       value={edicionMasivaData.id_subgrupo}
                       onValueChange={(value) => setEdicionMasivaData(prev => ({ ...prev, id_subgrupo: value }))}
                     >
-                      <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                      <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                         <SelectValue placeholder="No modificar" />
                       </SelectTrigger>
-                      <SelectContent className="bg-slate-900 border-slate-700">
+                      <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                         {subgrupos
                           .filter(s => Number(s.id_grupo) === Number(edicionMasivaData.id_grupo))
                           .map(sub => (
@@ -1512,15 +1512,15 @@ function EditarProductoContent() {
                 
                 {/* Unidad de Medida */}
                 <div className="space-y-1">
-                  <Label className="text-slate-300">Unidad de Medida</Label>
+                  <Label className="text-slate-600 dark:text-slate-300">Unidad de Medida</Label>
                   <Select
                     value={edicionMasivaData.unimedida}
                     onValueChange={(value) => setEdicionMasivaData(prev => ({ ...prev, unimedida: value }))}
                   >
-                    <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                    <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                       <SelectValue placeholder="No modificar" />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-900 border-slate-700">
+                    <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                       {unidadesMedida.map(u => (
                         <SelectItem key={u} value={u}>{u}</SelectItem>
                       ))}
@@ -1530,15 +1530,15 @@ function EditarProductoContent() {
                 
                 {/* Lado */}
                 <div className="space-y-1">
-                  <Label className="text-slate-300">Lado</Label>
+                  <Label className="text-slate-600 dark:text-slate-300">Lado</Label>
                   <Select
                     value={edicionMasivaData.lado}
                     onValueChange={(value) => setEdicionMasivaData(prev => ({ ...prev, lado: value }))}
                   >
-                    <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                    <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                       <SelectValue placeholder="No modificar" />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-900 border-slate-700">
+                    <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                       {lados.map(l => (
                         <SelectItem key={l} value={l}>{l}</SelectItem>
                       ))}
@@ -1548,15 +1548,15 @@ function EditarProductoContent() {
                 
                 {/* Exento de Impuestos */}
                 <div className="space-y-1">
-                  <Label className="text-slate-300">Exento de Impuestos</Label>
+                  <Label className="text-slate-600 dark:text-slate-300">Exento de Impuestos</Label>
                   <Select
                     value={edicionMasivaData.exento}
                     onValueChange={(value) => setEdicionMasivaData(prev => ({ ...prev, exento: value as '' | 'true' | 'false' }))}
                   >
-                    <SelectTrigger className="bg-slate-900 border-slate-700 text-slate-200">
+                    <SelectTrigger className="bg-slate-100 dark:bg-slate-900 border-slate-700 text-slate-200">
                       <SelectValue placeholder="No modificar" />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-900 border-slate-700">
+                    <SelectContent className="bg-slate-100 dark:bg-slate-900 border-slate-700">
                       <SelectItem value="true">Sí - Exento</SelectItem>
                       <SelectItem value="false">No - Con impuestos</SelectItem>
                     </SelectContent>
@@ -1568,7 +1568,7 @@ function EditarProductoContent() {
                 <Button
                   variant="outline"
                   onClick={() => setShowEdicionMasiva(false)}
-                  className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                  className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                 >
                   Cancelar
                 </Button>
@@ -1603,7 +1603,7 @@ export default function EditarProductoPage() {
     <Suspense fallback={
       <DashboardLayout>
         <div className="flex items-center justify-center h-screen">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0e88c9]"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
         </div>
       </DashboardLayout>
     }>

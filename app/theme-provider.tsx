@@ -22,8 +22,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(initialTheme);
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     
-    // Guardar el tema en localStorage
-    localStorage.setItem('theme', initialTheme);
+    if (!savedTheme) {
+      localStorage.setItem('theme', initialTheme);
+    }
   }, []);
   
   const value = {

@@ -146,14 +146,14 @@ export default function CostosPage() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         <div className="space-y-6">
           {/* Navbar superior */}
-          <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+          <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)]">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-              <span className="h-6 w-px bg-slate-700" />
-              <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Gestión de Costos</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+              <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+              <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">Gestión de Costos</span>
             </div>
             <div className="flex items-center gap-3">
               <NotificationDropdown />
@@ -164,10 +164,10 @@ export default function CostosPage() {
           {/* Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-slate-100">Gestión de Costos</h1>
+              <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Gestión de Costos</h1>
               <p className="text-slate-400">Administra los costos de los productos</p>
             </div>
-            <Badge variant="outline" className="text-[#0e88c9] border-[#0e88c9]/50">
+            <Badge variant="outline" className="text-primary border-primary/50">
               <DollarSign className="h-4 w-4 mr-1" />
               {productos.length} productos
             </Badge>
@@ -175,9 +175,9 @@ export default function CostosPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Panel izquierdo - Lista de productos */}
-          <Card className="lg:col-span-1 bg-[#141e2e] border border-[#0e88c9]/30">
+          <Card className="lg:col-span-1 bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm text-[#0e88c9]">Seleccionar Producto</CardTitle>
+              <CardTitle className="text-sm text-primary">Seleccionar Producto</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <SearchFilters
@@ -195,8 +195,8 @@ export default function CostosPage() {
                     onClick={() => handleSelectProducto(producto)}
                     className={`p-3 rounded-lg cursor-pointer transition-all ${
                       productoSeleccionado?.idprod === producto.idprod
-                        ? 'bg-[#0e88c9]/20 border border-[#0e88c9]/50'
-                        : 'bg-slate-900/50 hover:bg-slate-800/50 border border-transparent'
+                        ? 'bg-primary/20 border border-primary/50'
+                        : 'bg-slate-100 dark:bg-slate-900/50 hover:bg-slate-800/50 border border-transparent'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ export default function CostosPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-slate-200 truncate">{producto.nombre}</p>
-                        <p className="text-xs text-slate-500">OE: {producto.OE}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">OE: {producto.OE}</p>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function CostosPage() {
           </Card>
 
           {/* Panel derecho - Formulario de costos */}
-          <Card className="lg:col-span-2 bg-[#141e2e] border border-[#0e88c9]/30">
+          <Card className="lg:col-span-2 bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30">
             <CardHeader>
               <CardTitle className="text-lg text-slate-100 flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-emerald-400" />
@@ -249,7 +249,7 @@ export default function CostosPage() {
                           step="0.01"
                           value={formData.costo}
                           onChange={(e) => setFormData({...formData, costo: e.target.value})}
-                          className="pl-7 bg-slate-950/80 border-slate-700/40 text-slate-100"
+                          className="pl-7 bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                         />
                       </div>
                     </div>
@@ -262,7 +262,7 @@ export default function CostosPage() {
                           step="0.01"
                           value={formData.costo_proveedor}
                           onChange={(e) => setFormData({...formData, costo_proveedor: e.target.value})}
-                          className="pl-7 bg-slate-950/80 border-slate-700/40 text-slate-100"
+                          className="pl-7 bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                         />
                       </div>
                     </div>
@@ -275,7 +275,7 @@ export default function CostosPage() {
                           step="0.01"
                           value={formData.costo_local}
                           onChange={(e) => setFormData({...formData, costo_local: e.target.value})}
-                          className="pl-7 bg-slate-950/80 border-slate-700/40 text-slate-100"
+                          className="pl-7 bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                         />
                       </div>
                     </div>
@@ -288,7 +288,7 @@ export default function CostosPage() {
                           step="0.01"
                           value={formData.iva_pagado}
                           onChange={(e) => setFormData({...formData, iva_pagado: e.target.value})}
-                          className="pl-7 bg-slate-950/80 border-slate-700/40 text-slate-100"
+                          className="pl-7 bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                         />
                       </div>
                     </div>
@@ -299,7 +299,7 @@ export default function CostosPage() {
                         value={formData.nofactura}
                         onChange={(e) => setFormData({...formData, nofactura: e.target.value})}
                         placeholder="FAC-001"
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                       />
                     </div>
                     <div className="space-y-2">
@@ -308,33 +308,33 @@ export default function CostosPage() {
                         type="date"
                         value={formData.dt_compra}
                         onChange={(e) => setFormData({...formData, dt_compra: e.target.value})}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100"
                       />
                     </div>
                   </div>
 
                   {/* Información de respaldos */}
                   {costoData && (
-                    <div className="p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                    <div className="p-4 bg-slate-100 dark:bg-slate-900/50 rounded-lg border border-slate-700/30">
                       <div className="flex items-center gap-2 mb-3">
                         <History className="h-4 w-4 text-amber-400" />
                         <span className="text-sm font-medium text-slate-300">Historial de Respaldos</span>
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                         <div>
-                          <span className="text-slate-500">Costo Promedio:</span>
+                          <span className="text-slate-800 dark:text-slate-500">Costo Promedio:</span>
                           <span className="text-emerald-400 ml-2 font-mono">${parseFloat(costoData.costo_promedio || '0').toFixed(2)}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">Previo 1:</span>
+                          <span className="text-slate-800 dark:text-slate-500">Previo 1:</span>
                           <span className="text-slate-300 ml-2 font-mono">${parseFloat(costoData.costo_previo1 || '0').toFixed(2)}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">Previo 2:</span>
+                          <span className="text-slate-800 dark:text-slate-500">Previo 2:</span>
                           <span className="text-slate-300 ml-2 font-mono">${parseFloat(costoData.costo_previo2 || '0').toFixed(2)}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">Última actualización:</span>
+                          <span className="text-slate-800 dark:text-slate-500">Última actualización:</span>
                           <span className="text-slate-300 ml-2">{costoData.dt_compra ? new Date(costoData.dt_compra).toLocaleDateString() : '-'}</span>
                         </div>
                       </div>
@@ -357,7 +357,7 @@ export default function CostosPage() {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center py-12 text-slate-500">
+                <div className="flex flex-col items-center justify-center py-12 text-slate-800 dark:text-slate-500">
                   <Package className="h-16 w-16 mb-4 opacity-50" />
                   <p>Selecciona un producto de la lista para ver y editar sus costos</p>
                 </div>

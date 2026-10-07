@@ -152,7 +152,7 @@ export function FloatingWindowsRenderer() {
       {floatingWindows.map((win) => (
         <div
           key={`floating-${win.id}`}
-          className="fixed bg-[#0d1523] border border-[#0e88c9]/50 rounded-xl shadow-2xl select-none"
+          className="fixed bg-background border border-primary/50 rounded-xl shadow-2xl select-none"
           style={{
             top: win.position.y,
             left: win.position.x,
@@ -164,11 +164,11 @@ export function FloatingWindowsRenderer() {
         >
           {/* Header arrastrable */}
           <div
-            className="flex items-center justify-between px-3 py-2 border-b border-slate-700 cursor-move bg-[#141e2e]"
+            className="flex items-center justify-between px-3 py-2 border-b border-border cursor-move bg-card"
             onMouseDown={(e) => handleMouseDown(e, win.id, win.position)}
           >
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <Package className="h-4 w-4 text-[#0e88c9] flex-shrink-0" />
+              <Package className="h-4 w-4 text-primary flex-shrink-0" />
               <span className="text-sm font-medium text-slate-200 truncate">{win.producto.nombre}</span>
             </div>
             <button
@@ -176,7 +176,7 @@ export function FloatingWindowsRenderer() {
                 e.stopPropagation();
                 refreshProductData(win.producto.idprod);
               }}
-              className={`p-1 rounded hover:bg-[#0e88c9]/20 text-slate-400 hover:text-[#0e88c9] flex-shrink-0 ${isRefreshing[win.producto.idprod] ? 'animate-spin' : ''}`}
+              className={`p-1 rounded hover:bg-primary/20 text-slate-400 hover:text-primary flex-shrink-0 ${isRefreshing[win.producto.idprod] ? 'animate-spin' : ''}`}
               title="Actualizar datos"
             >
               <RefreshCw className="h-4 w-4" />
@@ -214,7 +214,7 @@ export function FloatingWindowsRenderer() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <span className="text-slate-500">ID:</span>
-                  <span className="text-[#0e88c9] ml-1 font-medium">{win.producto.idprod}</span>
+                  <span className="text-primary ml-1 font-medium">{win.producto.idprod}</span>
                 </div>
                 <div>
                   <span className="text-slate-500">Stock:</span>
@@ -241,7 +241,7 @@ export function FloatingWindowsRenderer() {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-slate-500 text-xs">Categoría:</span>
-                    <span className="text-[#0e88c9] ml-1 text-xs">
+                    <span className="text-primary ml-1 text-xs">
                       {(win.producto as any).categoria_nueva_nombre || (win.producto as any).categoria_nombre || '-'}
                     </span>
                   </div>
@@ -280,7 +280,7 @@ export function FloatingWindowsRenderer() {
                 <Button
                   size="sm"
                   onClick={() => handleOpenTab(win.producto.idprod)}
-                  className="flex-1 h-8 text-xs bg-[#0e88c9]/10 text-[#0e88c9] border border-[#0e88c9]/40 hover:bg-[#0e88c9]/20"
+                  className="flex-1 h-8 text-xs bg-primary/10 text-primary border border-primary/40 hover:bg-primary/20"
                 >
                   <Layers className="h-3 w-3 mr-1" />
                   Pestaña
@@ -302,7 +302,7 @@ export function FloatingWindowsRenderer() {
             className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
             onMouseDown={(e) => handleResizeStart(e, win.id)}
           >
-            <svg className="w-4 h-4 text-slate-500 hover:text-[#0e88c9]" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-4 h-4 text-slate-500 hover:text-primary" viewBox="0 0 24 24" fill="currentColor">
               <path d="M22 22H20V20H22V22ZM22 18H20V16H22V18ZM18 22H16V20H18V22ZM22 14H20V12H22V14ZM18 18H16V16H18V18ZM14 22H12V20H14V22Z" />
             </svg>
           </div>

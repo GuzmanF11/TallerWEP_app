@@ -476,14 +476,14 @@ export default function NuevoProductoPage() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         <div className="space-y-6">
         {/* Navbar superior tipo Figma */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+        <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)]">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Nuevo Producto</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">Nuevo Producto</span>
           </div>
           <div className="flex items-center gap-3">
             <NotificationDropdown />
@@ -496,7 +496,7 @@ export default function NuevoProductoPage() {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="text-slate-300 hover:text-slate-50"
+              className="text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-50"
               onClick={() => {
                 if (hasUnsavedChanges()) {
                   setPendingNavigation('/dashboard/inventario/administrar');
@@ -509,10 +509,10 @@ export default function NuevoProductoPage() {
               <ArrowLeft className="h-4 w-4" />
             </Button>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-50 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-50 tracking-tight">
                 Nuevo Producto
               </h1>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-slate-500 dark:text-slate-400">
                 Complete la información del producto para registrarlo en el inventario
               </p>
             </div>
@@ -523,7 +523,7 @@ export default function NuevoProductoPage() {
               onClick={handleLimpiarFormulario}
               disabled={loading}
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-700 rounded-full px-5"
+              className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full px-5"
             >
               <X className="h-4 w-4 mr-2" />
               Limpiar
@@ -532,7 +532,7 @@ export default function NuevoProductoPage() {
               type="submit" 
               form="product-form"
               disabled={loading} 
-              className="border-[#0e88c9]/60 bg-[#0e88c9]/10 text-[#0e88c9] hover:bg-[#0e88c9]/20 rounded-full px-5"
+              className="border-primary/60 bg-primary/10 text-primary hover:bg-primary/20 rounded-full px-5"
             >
               <Save className="h-4 w-4 mr-2" />
               {loading ? 'Guardando...' : 'Guardar Producto'}
@@ -544,14 +544,14 @@ export default function NuevoProductoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
             {/* Columna 1: Imágenes / ficha visual como en Figma */}
             <div className="space-y-6 lg:order-1">
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-[0_0_20px_rgba(14,136,201,0.25)] rounded-xl overflow-hidden">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.1)] dark:shadow-[0_0_20px_rgba(14,136,201,0.25)] rounded-xl overflow-hidden">
                 <CardHeader className="pb-3 flex flex-row items-center justify-between">
-                  <CardTitle className="text-sm text-slate-200 tracking-wide">IMÁGENES</CardTitle>
+                  <CardTitle className="text-sm text-slate-700 dark:text-slate-200 tracking-wide">IMÁGENES</CardTitle>
                   <span className="text-xs text-emerald-400">{images.length}/10</span>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Imagen principal grande */}
-                  <div className="relative w-full h-[200px] bg-slate-900 rounded-2xl overflow-hidden">
+                  <div className="relative w-full h-[200px] bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden">
                     {images.length > 0 ? (
                       <>
                         <img 
@@ -575,9 +575,9 @@ export default function NuevoProductoPage() {
                       </>
                     ) : (
                       <div className="flex items-center justify-center h-full w-full p-4">
-                        <div className="rounded-xl border-2 border-dashed border-slate-700/40 bg-slate-950/60 p-4 w-full h-full flex flex-col items-center justify-center">
+                        <div className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-300 dark:border-slate-700/40 bg-slate-950/60 p-4 w-full h-full flex flex-col items-center justify-center">
                           <ImageUpload onImagesChange={handleImagesChange} />
-                          <p className="text-xs text-slate-500 mt-2">
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                             PNG, JPG, JPEG hasta 10MB. Máximo 10 imágenes.
                           </p>
                         </div>
@@ -602,8 +602,8 @@ export default function NuevoProductoPage() {
                                 key={idx} 
                                 className={`relative aspect-square rounded-lg border-2 overflow-hidden group cursor-pointer ${
                                   idx === selectedImageIndex 
-                                    ? 'border-[#0e88c9] bg-slate-800 ring-2 ring-[#0e88c9]/50' 
-                                    : 'border-slate-700/50 bg-slate-900 hover:border-slate-500'
+                                    ? 'border-primary bg-slate-800 ring-2 ring-primary/50' 
+                                    : 'border-slate-700/50 bg-slate-100 dark:bg-slate-900 hover:border-slate-500'
                                 }`}
                                 draggable
                                 onDragStart={(e) => {
@@ -647,7 +647,7 @@ export default function NuevoProductoPage() {
                                   ×
                                 </button>
                                 {idx === selectedImageIndex && (
-                                  <div className="absolute inset-0 border-2 border-[#0e88c9] rounded-lg pointer-events-none"></div>
+                                  <div className="absolute inset-0 border-2 border-primary rounded-lg pointer-events-none"></div>
                                 )}
                               </div>
                             ))}
@@ -660,12 +660,12 @@ export default function NuevoProductoPage() {
               </Card>
 
               {/* Botón de envío tipo barra inferior de panel */}
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
                 <CardContent className="p-6 space-y-2">
                   <Button 
                     type="submit" 
                     disabled={loading} 
-                    className="w-full border border-[#0e88c9]/60 bg-[#0e88c9]/10 text-[#0e88c9] hover:bg-[#0e88c9]/20 rounded-xl transition-all"
+                    className="w-full border border-primary/60 bg-primary/10 text-primary hover:bg-primary/20 rounded-xl transition-all"
                     size="lg"
                   >
                     <Save className="h-4 w-4 mr-2" />
@@ -682,10 +682,10 @@ export default function NuevoProductoPage() {
 
             {/* Columna 2-3: Información del producto (formulario principal) */}
             <div className="lg:col-span-2 space-y-6 lg:order-2">
-              <Card className="bg-[#141e2e] border border-[#0e88c9]/30 shadow-lg rounded-xl">
+              <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 shadow-[0_8px_30px_rgba(14,136,201,0.08)] dark:shadow-lg rounded-xl">
                 <CardHeader className="pb-3 flex items-center justify-between">
                   <div>
-                    <CardTitle className="text-sm text-slate-100 tracking-wide">INFORMACIÓN DEL PRODUCTO</CardTitle>
+                    <CardTitle className="text-sm text-slate-800 dark:text-slate-100 tracking-wide">INFORMACIÓN DEL PRODUCTO</CardTitle>
                     <CardDescription className="text-xs text-slate-400">Ingrese los datos básicos y técnicos del producto</CardDescription>
                   </div>
                 </CardHeader>
@@ -700,7 +700,7 @@ export default function NuevoProductoPage() {
                         value={formData.nombre}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.nombre ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.nombre ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.nombre && <p className="text-xs text-red-400">{validationErrors.nombre}</p>}
                     </div>
@@ -712,7 +712,7 @@ export default function NuevoProductoPage() {
                         value={formData.descripcion}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.descripcion ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.descripcion ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.descripcion && <p className="text-xs text-red-400">{validationErrors.descripcion}</p>}
                     </div>
@@ -724,7 +724,7 @@ export default function NuevoProductoPage() {
                         value={formData.etiquetas}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.etiquetas ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.etiquetas ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.etiquetas && <p className="text-xs text-red-400">{validationErrors.etiquetas}</p>}
                     </div>
@@ -740,7 +740,7 @@ export default function NuevoProductoPage() {
                         value={formData.marca}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.marca ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.marca ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.marca && <p className="text-xs text-red-400">{validationErrors.marca}</p>}
                     </div>
@@ -760,7 +760,7 @@ export default function NuevoProductoPage() {
                           }));
                         }}
                         onKeyDown={handleKeyDown}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.OE ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.OE ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.OE && <p className="text-xs text-red-400">{validationErrors.OE}</p>}
                     </div>
@@ -790,12 +790,12 @@ export default function NuevoProductoPage() {
                             }
                           }}
                           onKeyDown={handleKeyDown}
-                          className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 pr-10 ${validationErrors.idprodprov || proveedorError ? 'border-red-500' : 'border-slate-700/40'}`}
+                          className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 pr-10 ${validationErrors.idprodprov || proveedorError ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                         />
                         {/* Indicador de estado */}
                         <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
                           {checkingProveedor ? (
-                            <div className="w-5 h-5 border-2 border-[#0e88c9] border-t-transparent rounded-full animate-spin"></div>
+                            <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
                           ) : formData.idprodprov.trim() ? (
                             proveedorError ? (
                               <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
@@ -821,7 +821,7 @@ export default function NuevoProductoPage() {
                         value={formData.idprodpaquete}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -831,7 +831,7 @@ export default function NuevoProductoPage() {
                         placeholder="ID del producto físico" 
                         value={formData.idprodfisico}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
@@ -843,7 +843,7 @@ export default function NuevoProductoPage() {
                       placeholder="Código QR o barras" 
                       value={formData.codigo_barras}
                       onChange={handleInputChange}
-                      className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                      className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                     />
                   </div>
 
@@ -855,10 +855,10 @@ export default function NuevoProductoPage() {
                         value={formData.idcategoria_nuevo}
                         onValueChange={(value) => handleSelectChange('idcategoria_nuevo', value)}
                       >
-                        <SelectTrigger className={`bg-slate-950/80 text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.idcategoria_nuevo ? 'border-red-500' : 'border-slate-700/40'}`}>
+                        <SelectTrigger className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 shadow-sm dark:shadow-none ${validationErrors.idcategoria_nuevo ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}>
                           <SelectValue placeholder="Seleccione categoría" />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                        <SelectContent className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
                           {categoriasNuevas.map((cat) => (
                             <SelectItem key={cat.idcategoria} value={String(cat.idcategoria)}>
                               {cat.nombre}
@@ -875,10 +875,10 @@ export default function NuevoProductoPage() {
                         onValueChange={(value) => handleSelectChange('id_grupo', value)}
                         disabled={!formData.idcategoria_nuevo}
                       >
-                        <SelectTrigger className={`bg-slate-950/80 text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 border-slate-700/40 ${!formData.idcategoria_nuevo ? 'opacity-50' : ''}`}>
+                        <SelectTrigger className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 shadow-sm dark:shadow-none border-slate-300 dark:border-slate-700/40 ${!formData.idcategoria_nuevo ? 'opacity-50' : ''}`}>
                           <SelectValue placeholder={formData.idcategoria_nuevo ? "Seleccione grupo" : "Primero seleccione categoría"} />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                        <SelectContent className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
                           {gruposFiltrados.map((grupo) => (
                             <SelectItem key={grupo.id_grupo} value={String(grupo.id_grupo)}>
                               {grupo.codigo} - {grupo.nombre}
@@ -894,10 +894,10 @@ export default function NuevoProductoPage() {
                         onValueChange={(value) => handleSelectChange('id_subgrupo', value)}
                         disabled={!formData.id_grupo}
                       >
-                        <SelectTrigger className={`bg-slate-950/80 text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 border-slate-700/40 ${!formData.id_grupo ? 'opacity-50' : ''}`}>
+                        <SelectTrigger className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 shadow-sm dark:shadow-none border-slate-300 dark:border-slate-700/40 ${!formData.id_grupo ? 'opacity-50' : ''}`}>
                           <SelectValue placeholder={formData.id_grupo ? "Seleccione subgrupo" : "Primero seleccione grupo"} />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                        <SelectContent className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
                           {subgruposFiltrados.map((subgrupo) => (
                             <SelectItem key={subgrupo.id_subgrupo} value={String(subgrupo.id_subgrupo)}>
                               {subgrupo.codigo} - {subgrupo.nombre}
@@ -919,7 +919,7 @@ export default function NuevoProductoPage() {
                         placeholder="0.000" 
                         value={formData.peso}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -929,7 +929,7 @@ export default function NuevoProductoPage() {
                         placeholder="8708990000" 
                         value={formData.codarancel}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -939,7 +939,7 @@ export default function NuevoProductoPage() {
                         placeholder="Ej: 1 litro, 5 galones" 
                         value={formData.capacidad}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
@@ -953,7 +953,7 @@ export default function NuevoProductoPage() {
                         placeholder="Modelo" 
                         value={formData.modelo}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -963,7 +963,7 @@ export default function NuevoProductoPage() {
                         placeholder="Clase del producto" 
                         value={formData.clase}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
@@ -976,7 +976,7 @@ export default function NuevoProductoPage() {
                         placeholder="Estilo" 
                         value={formData.estilo}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -986,7 +986,7 @@ export default function NuevoProductoPage() {
                         placeholder="Giro" 
                         value={formData.giro}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
@@ -1002,9 +1002,9 @@ export default function NuevoProductoPage() {
                         placeholder="0.00" 
                         value={formData.costo}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
-                      <p className="text-xs text-slate-500">Precio de compra o costo de adquisición del producto</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Precio de compra o costo de adquisición del producto</p>
                     </div>
                   </div>
 
@@ -1017,7 +1017,7 @@ export default function NuevoProductoPage() {
                         type="number" 
                         value={formData.stock_contable}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -1027,14 +1027,14 @@ export default function NuevoProductoPage() {
                         type="number" 
                         value={formData.stock_fisico}
                         onChange={handleInputChange}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
 
                   {/* Información Adicional */}
                   <div className="space-y-4 border-t pt-4">
-                    <h3 className="text-sm font-medium text-slate-400">Información Adicional</h3>
+                    <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">Información Adicional</h3>
                     
                     <div className="space-y-2">
                       <Label htmlFor="info_reservada">Información Reservada (Acerca del Item)</Label>
@@ -1044,7 +1044,7 @@ export default function NuevoProductoPage() {
                         value={formData.info_reservada}
                         onChange={handleInputChange}
                         rows={3}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
 
@@ -1056,7 +1056,7 @@ export default function NuevoProductoPage() {
                         value={formData.info_publica}
                         onChange={handleInputChange}
                         rows={3}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
 
@@ -1068,7 +1068,7 @@ export default function NuevoProductoPage() {
                         value={formData.info_referencias_directas}
                         onChange={handleInputChange}
                         rows={2}
-                        className={`bg-slate-950/80 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.info_referencias_directas ? 'border-red-500' : 'border-slate-700/40'}`}
+                        className={`bg-white dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20 ${validationErrors.info_referencias_directas ? 'border-red-500' : 'border-slate-300 dark:border-slate-700/40'}`}
                       />
                       {validationErrors.info_referencias_directas && <p className="text-xs text-red-400">{validationErrors.info_referencias_directas}</p>}
                     </div>
@@ -1081,7 +1081,7 @@ export default function NuevoProductoPage() {
                         value={formData.info_referencias_indirectas}
                         onChange={handleInputChange}
                         rows={2}
-                        className="bg-slate-950/80 border-slate-700/40 text-slate-100 placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
+                        className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-cyan-700/60 focus:ring-cyan-700/20"
                       />
                     </div>
                   </div>
@@ -1091,10 +1091,10 @@ export default function NuevoProductoPage() {
                     <div className="space-y-2">
                       <Label htmlFor="lado">Lado</Label>
                       <Select onValueChange={(value) => handleSelectChange('lado', value)}>
-                        <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20">
+                        <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 shadow-sm dark:shadow-none">
                           <SelectValue placeholder="Seleccione lado" />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                        <SelectContent className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
                           {lados.map((lado) => (
                             <SelectItem key={lado} value={lado}>
                               {lado}
@@ -1109,10 +1109,10 @@ export default function NuevoProductoPage() {
                         defaultValue="UNIDAD"
                         onValueChange={(value) => handleSelectChange('unimedida', value)}
                       >
-                        <SelectTrigger className="bg-slate-950/80 border-slate-700/40 text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20">
+                        <SelectTrigger className="bg-white dark:bg-slate-950/80 border-slate-300 dark:border-slate-300 dark:border-slate-700/40 text-slate-800 dark:text-slate-100 focus:border-cyan-700/60 focus:ring-cyan-700/20 shadow-sm dark:shadow-none">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-900 border-slate-700 text-slate-100">
+                        <SelectContent className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
                           {unidadesMedida.map((unidad) => (
                             <SelectItem key={unidad} value={unidad}>
                               {unidad}
@@ -1122,15 +1122,15 @@ export default function NuevoProductoPage() {
                       </Select>
                     </div>
                     <div className="space-y-2 flex items-end">
-                      <Label htmlFor="exento" className="flex items-center gap-2 cursor-pointer h-10 px-3 rounded-md border border-slate-700/40 bg-slate-950/80 w-full">
+                      <Label htmlFor="exento" className="flex items-center gap-2 cursor-pointer h-10 px-3 rounded-md border border-slate-300 dark:border-slate-300 dark:border-slate-700/40 bg-white dark:bg-slate-950/80 w-full">
                         <input
                           type="checkbox"
                           id="exento"
                           checked={formData.exento}
                           onChange={(e) => setFormData(prev => ({ ...prev, exento: e.target.checked }))}
-                          className="w-4 h-4 rounded border-slate-700 bg-slate-950/80 text-[#0e88c9] focus:ring-[#0e88c9] focus:ring-offset-0"
+                          className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950/80 text-primary focus:ring-primary focus:ring-offset-0"
                         />
-                        <span className="text-sm text-slate-100">Exento de Impuestos</span>
+                        <span className="text-sm text-slate-800 dark:text-slate-100">Exento de Impuestos</span>
                       </Label>
                     </div>
                   </div>
@@ -1143,31 +1143,31 @@ export default function NuevoProductoPage() {
         {/* Modal de Confirmación de Guardado */}
         {showConfirmSave && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl">
+            <div className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl">
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-amber-500/20 rounded-lg">
                   <AlertTriangle className="h-6 w-6 text-amber-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-slate-100">Confirmar Creación</h3>
-                  <p className="text-sm text-slate-400 mt-1">Esta acción creará un nuevo producto</p>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Confirmar Creación</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Esta acción creará un nuevo producto</p>
                 </div>
               </div>
-              <p className="mt-4 text-slate-300">
-                ¿Está seguro que desea crear el producto "<span className="text-[#0e88c9] font-medium">{formData.nombre}</span>"?
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
+                ¿Está seguro que desea crear el producto "<span className="text-primary font-medium">{formData.nombre}</span>"?
               </p>
               <div className="flex justify-end gap-3 mt-6">
                 <Button
                   variant="outline"
                   onClick={() => setShowConfirmSave(false)}
-                  className="border-slate-600 text-slate-300 hover:bg-slate-800"
+                  className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                 >
                   Cancelar
                 </Button>
                 <Button
                   onClick={confirmSave}
                   disabled={loading}
-                  className="bg-[#0e88c9] text-white hover:bg-[#0e88c9]/80"
+                  className="bg-primary text-white hover:bg-primary/80"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   {loading ? 'Guardando...' : 'Sí, Crear Producto'}
@@ -1180,17 +1180,17 @@ export default function NuevoProductoPage() {
         {/* Modal de Confirmación de Abandono */}
         {showConfirmLeave && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-[#141e2e] border border-[#0e88c9]/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl">
+            <div className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30 rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl">
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-amber-500/20 rounded-lg">
                   <AlertTriangle className="h-6 w-6 text-amber-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-slate-100">Cambios sin guardar</h3>
-                  <p className="text-sm text-slate-400 mt-1">Tiene información sin guardar</p>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Cambios sin guardar</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Tiene información sin guardar</p>
                 </div>
               </div>
-              <p className="mt-4 text-slate-300">
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
                 ¿Está seguro que desea abandonar la página? Los cambios no guardados se perderán.
               </p>
               <div className="flex justify-end gap-3 mt-6">
@@ -1200,7 +1200,7 @@ export default function NuevoProductoPage() {
                     setShowConfirmLeave(false);
                     setPendingNavigation(null);
                   }}
-                  className="border-slate-600 text-slate-300 hover:bg-slate-800 rounded-full px-6"
+                  className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full px-6"
                 >
                   Cancelar
                 </Button>
@@ -1211,7 +1211,7 @@ export default function NuevoProductoPage() {
                       router.push(pendingNavigation);
                     }
                   }}
-                  className="bg-[#0e88c9] text-white hover:bg-[#0e88c9]/80 rounded-full px-6"
+                  className="bg-primary text-white hover:bg-primary/80 rounded-full px-6"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   Sí, Abandonar

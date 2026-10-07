@@ -32,6 +32,9 @@ export function LoginForm() {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
+        if (data.user) {
+          localStorage.setItem('user', JSON.stringify(data.user));
+        }
         router.push('/dashboard');
       } else {
         setError(data.error || 'Error al iniciar sesión');
@@ -56,7 +59,7 @@ export function LoginForm() {
       </div>
 
       {/* Card de Login */}
-      <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl shadow-black/40 p-8">
+      <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl shadow-black/40 p-8 transition-all duration-200 hover:border-cyan-500/50">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="email" className="text-slate-300 text-sm font-medium">

@@ -168,14 +168,14 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         <div className="space-y-6">
         {/* Navbar superior */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)]">
+        <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)]">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Importar Productos</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">Importar Productos</span>
           </div>
           <div className="flex items-center gap-3">
             <NotificationDropdown />
@@ -186,13 +186,13 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">Importar Productos</h1>
+            <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Importar Productos</h1>
             <p className="text-slate-400">Carga masiva de productos desde archivo Excel</p>
           </div>
           <Button
             variant="outline"
             onClick={downloadTemplate}
-            className="border-[#0e88c9]/50 text-[#0e88c9] hover:bg-[#0e88c9]/10"
+            className="border-primary/50 text-primary hover:bg-primary/10"
           >
             <Download className="h-4 w-4 mr-2" />
             Descargar Plantilla
@@ -200,7 +200,7 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
         </div>
 
         {/* Zona de carga */}
-        <Card className="bg-[#141e2e] border border-[#0e88c9]/30">
+        <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30">
           <CardHeader>
             <CardTitle className="text-lg text-slate-100 flex items-center gap-2">
               <FileSpreadsheet className="h-5 w-5 text-emerald-400" />
@@ -213,8 +213,8 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
           <CardContent>
             <div 
               className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
-                isDragging ? 'border-[#0e88c9] bg-[#0e88c9]/10' :
-                file ? 'border-emerald-500/50 bg-emerald-500/5' : 'border-slate-700 hover:border-[#0e88c9]/50'
+                isDragging ? 'border-primary bg-primary/10' :
+                file ? 'border-emerald-500/50 bg-emerald-500/5' : 'border-slate-700 hover:border-primary/50'
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -231,18 +231,18 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
               
               {!file ? (
                 <label htmlFor="file-upload" className="cursor-pointer">
-                  <Upload className={`h-12 w-12 mx-auto mb-4 ${isDragging ? 'text-[#0e88c9]' : 'text-slate-500'}`} />
+                  <Upload className={`h-12 w-12 mx-auto mb-4 ${isDragging ? 'text-primary' : 'text-slate-800 dark:text-slate-500'}`} />
                   <p className="text-slate-300 mb-2">
                     {isDragging ? 'Suelta el archivo aquí' : 'Arrastra un archivo aquí o haz clic para seleccionar'}
                   </p>
-                  <p className="text-sm text-slate-500">Máximo 10MB</p>
+                  <p className="text-sm text-slate-800 dark:text-slate-500">Máximo 10MB</p>
                 </label>
               ) : (
                 <div className="flex items-center justify-center gap-4">
                   <FileSpreadsheet className="h-10 w-10 text-emerald-400" />
                   <div className="text-left">
                     <p className="text-slate-200 font-medium">{file.name}</p>
-                    <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(2)} KB</p>
+                    <p className="text-sm text-slate-800 dark:text-slate-500">{(file.size / 1024).toFixed(2)} KB</p>
                   </div>
                   <Button variant="ghost" size="sm" onClick={handleReset} className="text-slate-400 hover:text-red-400">
                     <XCircle className="h-5 w-5" />
@@ -252,7 +252,7 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
             </div>
 
             {loading && (
-              <div className="flex items-center justify-center gap-2 mt-4 text-[#0e88c9]">
+              <div className="flex items-center justify-center gap-2 mt-4 text-primary">
                 <RefreshCw className="h-5 w-5 animate-spin" />
                 <span>Procesando archivo...</span>
               </div>
@@ -281,7 +281,7 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
 
         {/* Preview de datos */}
         {previewData && (
-          <Card className="bg-[#141e2e] border border-[#0e88c9]/30">
+          <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-sky-200/70 dark:border-primary/30">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
@@ -304,11 +304,11 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
             </CardHeader>
             <CardContent>
               {/* Columnas mapeadas */}
-              <div className="mb-4 p-3 bg-slate-900/50 rounded-lg">
-                <p className="text-xs text-slate-500 mb-2">Columnas detectadas:</p>
+              <div className="mb-4 p-3 bg-slate-100 dark:bg-slate-900/50 rounded-lg">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">Columnas detectadas:</p>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(previewData.columnMapping).map(([index, field]) => (
-                    <Badge key={index} variant="secondary" className="bg-[#0e88c9]/20 text-[#0e88c9]">
+                    <Badge key={index} variant="secondary" className="bg-primary/20 text-primary">
                       {previewData.headers[parseInt(index)]} → {field}
                     </Badge>
                   ))}
@@ -331,8 +331,8 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
                   <tbody>
                     {previewData.preview.map((producto, idx) => (
                       <tr key={idx} className="border-b border-slate-800">
-                        <td className="py-2 px-3 text-slate-500">{producto._fila}</td>
-                        <td className="py-2 px-3 text-[#0e88c9]">{producto.OE}</td>
+                        <td className="py-2 px-3 text-slate-800 dark:text-slate-500">{producto._fila}</td>
+                        <td className="py-2 px-3 text-primary">{producto.OE}</td>
                         <td className="py-2 px-3 text-slate-200">{producto.nombre}</td>
                         <td className="py-2 px-3 text-slate-400">{producto.marca || '-'}</td>
                         <td className="py-2 px-3 text-right text-slate-300">{producto.stock_contable}</td>
@@ -342,7 +342,7 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
                   </tbody>
                 </table>
                 {previewData.productosValidos > 10 && (
-                  <p className="text-center text-sm text-slate-500 mt-2">
+                  <p className="text-center text-sm text-slate-800 dark:text-slate-500 mt-2">
                     Mostrando 10 de {previewData.productosValidos} productos
                   </p>
                 )}
@@ -386,7 +386,7 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
 
         {/* Resultado de importación */}
         {importResult && (
-          <Card className="bg-[#141e2e] border border-emerald-500/30">
+          <Card className="bg-gradient-to-br from-white to-emerald-50/40 dark:from-card dark:to-background border border-emerald-300 dark:border-emerald-500/30">
             <CardHeader>
               <CardTitle className="text-lg text-emerald-400 flex items-center gap-2">
                 <CheckCircle className="h-5 w-5" />
@@ -397,16 +397,16 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 <div className="p-4 bg-emerald-500/10 rounded-lg text-center">
                   <p className="text-2xl font-bold text-emerald-400">{importResult.insertados}</p>
-                  <p className="text-sm text-slate-400">Productos nuevos</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Productos nuevos</p>
                 </div>
                 <div className="p-4 bg-blue-500/10 rounded-lg text-center">
                   <p className="text-2xl font-bold text-blue-400">{importResult.actualizados}</p>
-                  <p className="text-sm text-slate-400">Actualizados</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Actualizados</p>
                 </div>
                 {importResult.errores.length > 0 && (
                   <div className="p-4 bg-red-500/10 rounded-lg text-center">
                     <p className="text-2xl font-bold text-red-400">{importResult.errores.length}</p>
-                    <p className="text-sm text-slate-400">Con errores</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Con errores</p>
                   </div>
                 )}
               </div>
@@ -431,22 +431,22 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
                   <ul className="text-sm text-amber-300/80 space-y-1 max-h-40 overflow-y-auto">
                     {importResult.productosNuevos.map((prod, idx) => (
                       <li key={idx} className="flex gap-2">
-                        <span className="text-slate-500">Fila {prod.fila}:</span>
+                        <span className="text-slate-800 dark:text-slate-500">Fila {prod.fila}:</span>
                         <span className="font-medium">{prod.nombre}</span>
-                        <span className="text-slate-500">|</span>
+                        <span className="text-slate-800 dark:text-slate-500">|</span>
                         <span>Marca: {prod.marca || '(vacía)'}</span>
-                        <span className="text-slate-500">|</span>
+                        <span className="text-slate-800 dark:text-slate-500">|</span>
                         <span>OE: {prod.OE || '(vacío)'}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="text-xs text-slate-500 mt-2">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                     Estos productos no coincidieron con ninguno existente por nombre+marca ni por OE.
                   </p>
                 </div>
               )}
 
-              <Button onClick={handleReset} className="w-full bg-[#0e88c9] hover:bg-[#0e88c9]/90">
+              <Button onClick={handleReset} className="w-full bg-primary hover:bg-primary/90">
                 Importar otro archivo
               </Button>
             </CardContent>
@@ -454,13 +454,13 @@ REF-002,Producto Ejemplo 2,Otra descripción,MARCA2,5,5,50.00,987654321,frenos,H
         )}
 
         {/* Instrucciones */}
-        <Card className="bg-[#141e2e] border border-slate-700/50">
+        <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-card dark:to-background border border-slate-200 dark:border-slate-700/50">
           <CardHeader>
-            <CardTitle className="text-sm text-slate-400">Instrucciones</CardTitle>
+            <CardTitle className="text-sm text-slate-500 dark:text-slate-400">Instrucciones</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-slate-500 space-y-2">
+          <CardContent className="text-sm text-slate-800 dark:text-slate-500 space-y-2">
             <p>1. Descarga la plantilla de ejemplo para ver el formato correcto</p>
-            <p>2. Las columnas <strong className="text-slate-300">OE</strong> (Referencia) y <strong className="text-slate-300">Nombre</strong> son obligatorias</p>
+            <p>2. Las columnas <strong className="text-slate-600 dark:text-slate-300">OE</strong> (Referencia) y <strong className="text-slate-600 dark:text-slate-300">Nombre</strong> son obligatorias</p>
             <p>3. Si un producto con el mismo OE ya existe, se actualizará en lugar de duplicarse</p>
             <p>4. Los nombres de columnas son flexibles (ej: "Stock", "Stock Contable", "stock_contable" funcionan igual)</p>
           </CardContent>

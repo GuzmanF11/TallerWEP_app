@@ -243,13 +243,13 @@ export default function EditarPreciosPage() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-[#0a0f1a] p-6">
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-surface-deep dark:via-surface-deep dark:to-surface-deep p-6">
         {/* Navbar superior tipo Figma */}
-        <div className="rounded-xl border border-[#0e88c9]/30 bg-[#0d1523] px-5 py-3 flex items-center justify-between gap-4 shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-6">
+        <div className="rounded-xl border border-sky-200 dark:border-primary/30 bg-gradient-to-r from-white to-sky-50/50 dark:from-background dark:to-background px-5 py-3 flex items-center justify-between gap-4 shadow-[0_8px_24px_rgba(14,136,201,0.08)] dark:shadow-[0_0_25px_rgba(15,23,42,0.9)] mb-6">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inventario</span>
-            <span className="h-6 w-px bg-slate-700" />
-            <span className="text-sm tracking-[0.18em] uppercase text-slate-200">Editar Precio</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Inventario</span>
+            <span className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-sm tracking-[0.18em] uppercase text-slate-700 dark:text-slate-200">Editar Precio</span>
           </div>
           <div className="flex items-center gap-3">
             <NotificationDropdown />
@@ -259,8 +259,8 @@ export default function EditarPreciosPage() {
 
         {/* Título y descripción */}
         <div className="mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-50 tracking-tight">Editar Precios</h1>
-          <p className="text-sm text-slate-400">Gestiona y configura los precios de los productos del inventario</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-50 tracking-tight">Editar Precios</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Gestiona y configura los precios de los productos del inventario</p>
         </div>
 
         {/* Barra de búsqueda con filtros */}
@@ -276,19 +276,19 @@ export default function EditarPreciosPage() {
         {/* Lista de productos */}
         <div className="space-y-2">
           {productosFiltrados.map((producto) => (
-            <div key={producto.idprod} className="bg-[#0d1523] border border-[#1e2a3b] rounded-lg overflow-hidden hover:border-[#0e88c9]/30 transition-colors">
+            <div key={producto.idprod} className="bg-white dark:bg-background border border-slate-200 dark:border-secondary rounded-lg overflow-hidden hover:border-primary/50 dark:hover:border-primary/30 transition-colors">
               <div className="px-6 py-4">
                 {/* Encabezado del producto */}
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#1e2a3b]">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-secondary">
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-slate-100 mb-1">{producto.nombre}</h3>
+                    <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-1">{producto.nombre}</h3>
                     <div className="flex items-center gap-4 text-xs">
                       <div className="flex items-center gap-2">
-                        <span className="text-slate-500">Código:</span>
+                        <span className="text-slate-800 dark:text-slate-500">Código:</span>
                         <span className="font-mono text-slate-300">{producto.idprod}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-slate-500">Código de barras:</span>
+                        <span className="text-slate-800 dark:text-slate-500">Código de barras:</span>
                         <span className="font-mono text-slate-300">{producto.codigo_barras || 'N/A'}</span>
                       </div>
                     </div>
@@ -318,19 +318,19 @@ export default function EditarPreciosPage() {
                         step="0.01"
                         value={producto.costo || 0}
                         disabled={true}
-                        className="h-10 text-sm border-[#1e2a3b] text-slate-200 font-mono bg-[#1e2a3b]/50 cursor-not-allowed opacity-60"
+                        className="h-10 text-sm border-secondary text-slate-200 font-mono bg-slate-100 dark:bg-secondary/50 cursor-not-allowed opacity-60"
                       />
-                      <p className="text-xs text-slate-500 mt-1">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                         Costo fijo establecido en Nuevo Producto
                       </p>
                     </div>
                   </div>
 
                   {/* Toggle Manual/Automático para Precios */}
-                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#1e2a3b]">
+                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-secondary">
                     <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Cálculo de Precios</h4>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium" style={{ color: !isPreciosAutomaticos(producto.idprod) ? '#0e88c9' : '#64748b' }}>MANUAL</span>
+                      <span className="text-xs font-medium" style={{ color: !isPreciosAutomaticos(producto.idprod) ? 'var(--primary)' : '#64748b' }}>MANUAL</span>
                       <label className={`relative inline-flex items-center ${preciosBloqueados[producto.idprod] ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
                         <input
                           type="checkbox"
@@ -339,22 +339,22 @@ export default function EditarPreciosPage() {
                           disabled={preciosBloqueados[producto.idprod]}
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-[#1e2a3b] peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#0e88c9] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0e88c9]"></div>
+                        <div className="w-11 h-6 bg-secondary peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                       </label>
-                      <span className="text-xs font-medium" style={{ color: isPreciosAutomaticos(producto.idprod) ? '#0e88c9' : '#64748b' }}>AUTOMÁTICO</span>
+                      <span className="text-xs font-medium" style={{ color: isPreciosAutomaticos(producto.idprod) ? 'var(--primary)' : '#64748b' }}>AUTOMÁTICO</span>
                     </div>
                   </div>
 
                   {/* Campo de Porcentaje (solo visible en modo automático) */}
                   {isPreciosAutomaticos(producto.idprod) && (
-                    <div className="mb-4 p-4 bg-[#0e88c9]/10 border border-[#0e88c9]/30 rounded-lg">
-                      <label className="text-xs font-medium text-[#0e88c9] block mb-2">Porcentaje de Ganancia Base (%)</label>
+                    <div className="mb-4 p-4 bg-primary/10 border border-primary/30 rounded-lg">
+                      <label className="text-xs font-medium text-primary block mb-2">Porcentaje de Ganancia Base (%)</label>
                       <Input
                         type="number"
                         step="1"
                         value={porcentajeGanancia[producto.idprod] || 30}
                         onChange={(e) => handlePorcentajeChange(producto.idprod, parseFloat(e.target.value))}
-                        className="h-10 text-sm bg-[#141e2e] border-[#0e88c9]/50 text-slate-200 font-mono max-w-xs"
+                        className="h-10 text-sm bg-white dark:bg-card border-sky-300 dark:border-primary/50 text-slate-800 dark:text-slate-200 font-mono max-w-xs"
                       />
                       <p className="text-xs text-slate-400 mt-2">
                         Los precios se calcularán automáticamente basados en el costo + este porcentaje
@@ -371,7 +371,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 1 - GENERAL
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Precio más alto</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Precio más alto</span>
                       </label>
                       <Input
                         type="number"
@@ -379,8 +379,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio1 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio1', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -389,7 +389,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 2 - MAYORISTA
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Con contrato sin repuesto</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Con contrato sin repuesto</span>
                       </label>
                       <Input
                         type="number"
@@ -397,8 +397,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio2 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio2', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -407,7 +407,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 3 - CLIENTE
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Cliente preferente</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Cliente preferente</span>
                       </label>
                       <Input
                         type="number"
@@ -415,8 +415,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio3 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio3', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -425,7 +425,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 4 - MECÁNICO
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Compras menores</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Compras menores</span>
                       </label>
                       <Input
                         type="number"
@@ -433,8 +433,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio4 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio4', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -443,7 +443,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 5 - MAYORISTA
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Montos considerables</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Montos considerables</span>
                       </label>
                       <Input
                         type="number"
@@ -451,8 +451,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio5 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio5', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -461,7 +461,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 6 - INVERSOR
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Montos mayores a $5000</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Montos mayores a $5000</span>
                       </label>
                       <Input
                         type="number"
@@ -469,8 +469,8 @@ export default function EditarPreciosPage() {
                         value={producto.precio6 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio6', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
-                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-[#1e2a3b]/50 cursor-not-allowed' : 'bg-[#141e2e]'
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
+                          (isPreciosAutomaticos(producto.idprod) || preciosBloqueados[producto.idprod]) ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -479,7 +479,7 @@ export default function EditarPreciosPage() {
                     <div>
                       <label className="text-xs font-medium text-slate-400 block mb-2">
                         Precio 7 - ESPECIAL
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Precio mínimo de venta</span>
+                        <span className="block text-[10px] text-slate-800 dark:text-slate-500 mt-0.5">Precio mínimo de venta</span>
                       </label>
                       <Input
                         type="number"
@@ -487,10 +487,10 @@ export default function EditarPreciosPage() {
                         value={producto.precio7 || 0}
                         onChange={(e) => handlePrecioChange(producto.idprod, 'precio7', parseFloat(e.target.value))}
                         disabled={isPreciosAutomaticos(producto.idprod)}
-                        className={`h-9 text-sm border-[#1e2a3b] text-slate-200 font-mono ${
+                        className={`h-9 text-sm border-secondary text-slate-200 font-mono ${
                           isPreciosAutomaticos(producto.idprod) 
-                            ? 'bg-[#1e2a3b]/50 cursor-not-allowed' 
-                            : 'bg-[#141e2e]'
+                            ? 'bg-slate-100 dark:bg-secondary/50 cursor-not-allowed' 
+                            : 'bg-white dark:bg-card'
                         }`}
                       />
                     </div>
@@ -498,14 +498,14 @@ export default function EditarPreciosPage() {
                 </div>
 
                 {/* Botón Guardar */}
-                <div className="flex justify-end pt-3 border-t border-[#1e2a3b]">
+                <div className="flex justify-end pt-3 border-t border-secondary">
                   <Button
                     onClick={() => handleSaveProducto(producto)}
                     disabled={preciosBloqueados[producto.idprod]}
                     className={`h-9 px-6 ${
                       preciosBloqueados[producto.idprod]
                         ? 'bg-slate-600 cursor-not-allowed opacity-50'
-                        : 'bg-[#0e88c9] hover:bg-[#0e88c9]/90 text-white'
+                        : 'bg-primary hover:bg-primary/90 text-white'
                     }`}
                   >
                     <Save className="h-4 w-4 mr-2" />
@@ -517,10 +517,10 @@ export default function EditarPreciosPage() {
           ))}
 
           {productosFiltrados.length === 0 && (
-            <div className="bg-[#0d1523] border border-[#1e2a3b] rounded-lg p-8 text-center">
+            <div className="bg-white dark:bg-background border border-slate-200 dark:border-secondary rounded-lg p-8 text-center">
               <Package className="mx-auto h-12 w-12 text-slate-400" />
               <h3 className="mt-2 text-sm font-medium text-slate-200">No hay productos</h3>
-              <p className="mt-1 text-sm text-slate-400">
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 No se encontraron productos con los filtros aplicados.
               </p>
             </div>
